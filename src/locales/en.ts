@@ -1,6 +1,6 @@
-import {localeSchema} from "@/locales/schema";
+import {LocaleSchema} from "@/stores/app-store";
 
-export const en: localeSchema = {
+export const en: LocaleSchema = {
     greeting: "Hello, world!",
     status: "Under development",
     intro: "Full Stack Developer with 10 years of experience in SaaS systems, ERPs and AI integrations.",
@@ -14,5 +14,11 @@ export const en: localeSchema = {
     emailPlaceholder: "your@email.com",
     notify: "Notify me",
     footer: "Made with code, coffee and AI",
-    launched: "Launching soon"
+    launched: "Launching soon",
+    emailRequired: "Email is required.",
+    emailInvalid: "Please enter a valid email address.",
+    emailSentSuccess: "Email sent successfully! We'll notify you when it's ready.",
+    emailSentErrorGeneric: "An error occurred while sending your email. Please try again later.",
+    emailSentErrorConnection: "Could not send email. Please check your internet connection.",
+    sending: "Sending...",
 }

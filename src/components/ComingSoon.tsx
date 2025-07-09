@@ -2,25 +2,17 @@
 
 import React, {useEffect, useState} from 'react';
 import {Coffee, ExternalLink, Github, Linkedin, Moon, Sun, Terminal} from 'lucide-react';
-import {en} from '@/locales/en';
-import {pt} from '@/locales/pt';
-import {localeSchema} from "@/locales/schema";
+import {useAppStore} from "@/stores/app-store";
+import {NotificationForm} from "@/components/NotificationForm";
 
 
 export const ComingSoon: React.FC = () => {
-    const [language, setLanguage] = useState<"en" | "pt">('pt');
-    const [currentTime, setCurrentTime] = useState('');
-    const [darkMode, setDarkMode] = useState(false);
-    const [mounted, setMounted] = useState(false);
+    const {isDarkMode, language, t, toggleDarkMode, setLanguage, initializeTheme} = useAppStore();
 
-    const isDarkMode = darkMode;
+    const [currentTime, setCurrentTime] = useState('');
 
     useEffect(() => {
-        setMounted(true);
-        // Check for saved theme preference or default to dark mode
-        const savedTheme = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        setDarkMode(savedTheme ? savedTheme === 'dark' : prefersDark);
+        initializeTheme();
 
         const updateTime = () => {
             setCurrentTime(new Date().toLocaleTimeString());
@@ -28,23 +20,7 @@ export const ComingSoon: React.FC = () => {
         updateTime();
         const interval = setInterval(updateTime, 1000);
         return () => clearInterval(interval);
-    }, []);
-    useEffect(() => {
-        if (mounted) {
-            localStorage.setItem('theme', darkMode ? 'dark' : 'light');
-            if (darkMode) {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-            }
-        }
-    }, [darkMode, mounted]);
-
-
-    const translations = {pt, en}
-    const t: localeSchema = translations[language as keyof typeof translations];
-
-    if (!mounted) return null;
+    }, [initializeTheme]);
 
     return (
         <div className="min-h-screen bg-gray-50 dark:bg-slate-800 transition-all duration-300">
@@ -65,7 +41,7 @@ export const ComingSoon: React.FC = () => {
 
                     <div className="flex items-center gap-3">
                         <button
-                            onClick={() => setDarkMode(!darkMode)}
+                            onClick={toggleDarkMode}
                             className="px-3 py-1 text-sm font-mono cursor-pointer rounded transition-all
                                bg-gray-50 border border-transparent hover:bg-gray-100
                                dark:bg-gray-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:text-gray-100
@@ -221,17 +197,7 @@ export const ComingSoon: React.FC = () => {
                         {/* Email Subscription */}
                         <div>
                             <h3 className="font-medium text-gray-900 dark:text-white mb-4">{t.subscribe}</h3>
-                            <div className="space-y-3">
-                                <input
-                                    type="email"
-                                    placeholder={t.emailPlaceholder}
-                                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500 dark:focus:ring-gray-400"
-                                />
-                                <button
-                                    className="cursor-pointer w-full px-4 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors font-medium">
-                                    {t.notify}
-                                </button>
-                            </div>
+                            <NotificationForm/>
                         </div>
                     </div>
                 </div>
