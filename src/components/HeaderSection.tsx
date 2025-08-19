@@ -1,23 +1,16 @@
 'use client'
 
-import React, {useEffect, useState} from 'react';
-import {Github, Linkedin, Moon, Sun, TerminalIcon} from 'lucide-react';
+import React, {useEffect} from 'react';
+import {Github, Linkedin, Moon, Sun} from 'lucide-react';
 import {useAppStore} from "@/stores/app-store";
 import Link from "next/link";
+import Image from "next/image";
 
 export const HeaderSection: React.FC = () => {
-    const {isDarkMode, language, t, toggleDarkMode, setLanguage, initializeTheme} = useAppStore();
-    const [currentTime, setCurrentTime] = useState('');
+    const {isDarkMode, language, toggleDarkMode, setLanguage, initializeTheme} = useAppStore();
 
     useEffect(() => {
         initializeTheme();
-
-        const updateTime = () => {
-            setCurrentTime(new Date().toLocaleTimeString());
-        };
-        updateTime();
-        const interval = setInterval(updateTime, 1000);
-        return () => clearInterval(interval);
     }, [initializeTheme]);
 
     return (
@@ -27,7 +20,7 @@ export const HeaderSection: React.FC = () => {
             <div className="max-w-6xl mx-auto px-6 py-4">
                 <div className="flex justify-between items-center">
                     <div className="flex items-center gap-3">
-                        <img src={"https://github.com/vdurvalino.png"} className={"w-10 h-10 rounded-full"}/>
+                        <Image src={"https://github.com/vdurvalino.png"} alt={"Vinícius Durvalino's profile picture"} width={40} height={40} className={"w-10 h-10 rounded-full"}/>
                         <div className="font-mono text-sm text-gray-600 dark:text-gray-400">
                             Vinícius Durvalino
                         </div>
@@ -35,31 +28,21 @@ export const HeaderSection: React.FC = () => {
 
                     {/* Navigation */}
                     <nav className="md:flex items-center gap-6">
-                        <button
-                            className={`text-sm font-medium transition-colors text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white`}
-                        >
+                        <Link href="/" className={`text-sm font-medium transition-colors text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white`}>
                             Home
-                        </button>
-                        <button
-                            className={`text-sm font-medium transition-colors text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white`}
-                        >
+                        </Link>
+                        <Link href="/about" className={`text-sm font-medium transition-colors text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white`}>
                             Sobre
-                        </button>
-                        <button
-                            className={`text-sm font-medium transition-colors text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white`}
-                        >
+                        </Link>
+                        <Link href="/projects" className={`text-sm font-medium transition-colors text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white`}>
                             Projetos
-                        </button>
-                        <button
-                            className={`text-sm font-medium transition-colors text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white`}
-                        >
+                        </Link>
+                        <Link href="/blog" className={`text-sm font-medium transition-colors text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white`}>
                             Blog
-                        </button>
-                        <button
-                            className={`text-sm font-medium transition-colors text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white`}
-                        >
+                        </Link>
+                        <Link href="/contact" className={`text-sm font-medium transition-colors text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white`}>
                             Contato
-                        </button>
+                        </Link>
                     </nav>
 
                     <div className="flex items-center gap-2">

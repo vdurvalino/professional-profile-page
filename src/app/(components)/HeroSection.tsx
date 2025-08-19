@@ -2,11 +2,9 @@
 
 import React from 'react';
 import {Github, Linkedin} from 'lucide-react';
-import {useAppStore} from "@/stores/app-store";
 import Link from "next/link";
 
 export const HeroSection: React.FC = () => {
-    const {isDarkMode, language, t, toggleDarkMode, setLanguage, initializeTheme} = useAppStore();
 
     return (
         <section className="mb-20">
