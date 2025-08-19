@@ -68,6 +68,97 @@ O site é organizado em várias páginas e seções distintas, cada uma com um p
 
 ### Contact
 
+## Design System
+
+Este documento define princípios de design e estilo global da aplicação.  
+Ele deve ser aplicado em todas as páginas, independentemente da estrutura ou conteúdo.
+
+---
+
+### Estilo Visual
+
+- **Tema Claro**
+  - Fundo base: `bg-gray-50`
+  - Superfícies: `bg-white`
+  - Texto principal: `text-gray-700`
+  - Texto secundário: `text-gray-500`
+
+- **Tema Escuro**
+  - Fundo base: `dark:bg-slate-800`
+  - Superfícies: `dark:bg-gray-800`
+  - Texto principal: `dark:text-gray-300`
+  - Texto secundário: `dark:text-gray-400`
+
+- **Destaques**
+  - Cor primária: `text-primary`, `bg-primary`
+  - Usada em botões, títulos e ícones de destaque.
+
+---
+
+### Layout
+
+- **Container Principal**
+  - Largura máxima: `max-w-6xl`
+  - Padding lateral: `px-6`
+  - Padding vertical: `py-16`
+
+- **Grid**
+  - Mobile-first
+  - `grid-cols-1 md:grid-cols-2 lg:grid-cols-3` quando aplicável
+
+- **Cards**
+  - Fundo: `bg-white dark:bg-gray-800`
+  - Borda arredondada: `rounded-lg`
+  - Sombra: `shadow-md`
+  - Espaçamento interno: `p-6`
+
+---
+
+###  Tipografia
+
+- **Títulos**
+  - H1: `text-4xl font-bold`
+  - H2: `text-3xl font-bold`
+  - H3: `text-xl font-bold`
+
+- **Parágrafos**
+  - Fonte base: `text-lg leading-relaxed`
+  - Cores adaptadas ao tema claro/escuro
+
+- **Links**
+  - Estilo padrão: `text-primary hover:underline`
+
+---
+
+### Componentes Reutilizáveis
+
+- **HeaderSection**
+  - Barra superior presente em todas as páginas
+  - Responsiva, com logotipo/identidade e navegação
+
+- **FooterSection**
+  - Rodapé consistente
+  - Links secundários e informações de contato
+
+- **Card**
+  - Estrutura flexível para listas, stacks ou conteúdos variados
+  - Contém título, ícone e itens
+
+- **CTA**
+  - Fundo com cor primária
+  - Texto centralizado
+  - Botão com contraste (ex.: fundo branco + texto primário)
+
+---
+
+### Princípios Gerais
+
+1. **Consistência**: manter estrutura e estilos iguais em todas as páginas.
+2. **Escalabilidade**: componentes devem ser reaproveitáveis em diferentes contextos.
+3. **Acessibilidade**: contraste adequado entre fundo e texto.
+4. **Responsividade**: sempre mobile-first, expandindo até `lg`.
+
+
 ## Funcionalidades Técnicas Notáveis
 
 * Internacionalização (i18n): O site suporta dois idiomas (Português e Inglês), graças aos arquivos em src/locales. O estado do idioma é gerenciado pelo app-store.
