@@ -61,6 +61,23 @@ O site é organizado em várias páginas e seções distintas, cada uma com um p
 * Finaliza com a frase "Feito com café, código e IA", que resume a cultura de trabalho do desenvolvedor.
 
 ### About
+A página "Sobre" oferece um mergulho profundo na trajetória profissional e nas competências técnicas do desenvolvedor. Ela é projetada para dar a recrutadores e líderes técnicos uma visão completa de suas habilidades e como elas podem ser aplicadas.
+
+#### BioSection (Seção de Biografia)
+* Apresenta uma biografia mais detalhada, contando a história profissional do desenvolvedor.
+* Inclui uma foto de perfil profissional para criar uma conexão mais pessoal.
+* Descreve a paixão por tecnologia e a filosofia de trabalho, focando em resolver problemas reais e entregar valor.
+
+#### DetailedStack (Stack Detalhada)
+* Expande a seção "Stack Tecnológica" da página inicial.
+* Apresenta as tecnologias com mais detalhes, incluindo o tempo de experiência com cada uma (ex: "React - 8 anos").
+* As tecnologias são agrupadas por categoria (Frontend, Backend, Banco de Dados, etc.) e apresentadas em cartões interativos.
+* Permite ao visitante expandir a lista para ver todas as tecnologias ou ver uma versão resumida, demonstrando profundidade e amplitude de conhecimento.
+
+#### CTA (Call to Action)
+* Uma seção de chamada para ação que incentiva o visitante a dar o próximo passo.
+* Contém um título convidativo como "Vamos Construir Algo Incrível Juntos?".
+* Oferece botões diretos para "Entrar em Contato" ou "Ver Projetos", guiando o usuário de forma eficaz pela jornada no site.
 
 ### Projects
 
