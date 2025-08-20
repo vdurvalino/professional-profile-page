@@ -4,7 +4,6 @@ import React, {useEffect} from 'react';
 import {Github, Linkedin, Moon, Sun} from 'lucide-react';
 import {useAppStore} from "@/stores/app-store";
 import Link from "next/link";
-import Image from "next/image";
 
 export const HeaderSection: React.FC = () => {
     const {isDarkMode, language, toggleDarkMode, setLanguage, initializeTheme} = useAppStore();

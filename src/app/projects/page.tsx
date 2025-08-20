@@ -9,7 +9,6 @@ import Image from "next/image";
 const ProjectsPage = () => {
     const [selectedTech, setSelectedTech] = useState<string[]>([]);
     const [showFilters, setShowFilters] = useState(false);
-    const [hoveredProject, setHoveredProject] = useState<string | null>(null);
 
     // Extract all unique technologies
     const allTechnologies = useMemo(() => {
@@ -128,8 +127,6 @@ const ProjectsPage = () => {
                         <div
                             key={project.id}
                             className="relative"
-                            onMouseEnter={() => setHoveredProject(String(project.id))}
-                            onMouseLeave={() => setHoveredProject(null)}
                         >
                             <div
                                 className={`grid md:grid-cols-2 gap-8 md:gap-16 items-center ${
