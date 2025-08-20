@@ -20,9 +20,9 @@ export const HeaderSection: React.FC = () => {
             <div className="max-w-6xl mx-auto px-6 py-4">
                 <div className="flex justify-between items-center">
                     <div className="flex items-center gap-3">
-                        <Image src={"https://github.com/vdurvalino.png"} alt={"Vinícius Durvalino's profile picture"} width={40} height={40} className={"w-10 h-10 rounded-full"}/>
-                        <div className="font-mono text-sm text-gray-600 dark:text-gray-400">
-                            Vinícius Durvalino
+                        {/*<Image src={"https://github.com/vdurvalino.png"} alt={"Vinícius Durvalino's profile picture"} width={40} height={40} className={"w-10 h-10 rounded-full"}/>*/}
+                        <div className="text-md font-mono font-semibold text-gray-600 dark:text-gray-400">
+                            &lt;<span className="ml-0.5">Vinícius <span className={"text-green-600"}>Durvalino</span></span> /&gt;
                         </div>
                     </div>
 

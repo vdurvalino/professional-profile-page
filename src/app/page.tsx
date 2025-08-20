@@ -7,7 +7,7 @@ import {ValuesAndPhilosophySection} from "@/app/(components)/ValuesAndPhilosophy
 
 export default function HomePage() {
     return (
-        <main className="max-w-6xl mx-auto px-6 py-16">
+        <main className="max-w-7xl mx-auto px-6 py-20">
             <HeroSection/>
             <StackSection/>
             <ProjectsSection/>
