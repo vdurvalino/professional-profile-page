@@ -21,4 +21,7 @@ export const pt: LocaleSchema = {
     emailSentErrorGeneric: "Ocorreu um erro ao enviar o e-mail. Tente novamente mais tarde.",
     emailSentErrorConnection: "Não foi possível enviar o e-mail. Verifique sua conexão.",
     sending: "Enviando...",
+    blog: "Blog",
+    seeAll: "Ver todos",
+    latestArticles: "Últimos Artigos",
 };

@@ -1,0 +1,48 @@
+'use client';
+
+import React, {useEffect, useState} from 'react';
+
+interface Heading {
+    id: string;
+    level: number;
+    text: string;
+}
+
+interface SidebarProps {
+    content: string;
+}
+
+const Sidebar: React.FC<SidebarProps> = ( {content} ) => {
+    const [headings, setHeadings] = useState<Heading[]>([]);
+
+    useEffect(() => {
+        const extractedHeadings: Heading[] = [];
+        const matches = content.matchAll(/<h([2-4]).*?>(.*?)<\/h[2-4]>/g);
+        for (const match of matches) {
+            const level = parseInt(match[1], 10);
+            const text = match[2];
+            const id = text.toLowerCase().replace(/\s+/g, '-');
+            extractedHeadings.push({id, level, text});
+        }
+        setHeadings(extractedHeadings);
+    }, [content]);
+
+    return (
+        <aside
+            className="sticky top-24 p-6 bg-gray-50 dark:bg-gray-800/20 rounded-lg border border-gray-200 dark:border-gray-700/50 h-fit">
+            <h3 className="text-lg font-semibold mb-4">On this page</h3>
+            <ul className="space-y-2">
+                {headings.map(( heading ) => (
+                    <li key={heading.id} style={{marginLeft: `${(heading.level - 2) * 1}rem`}}>
+                        <a href={`#${heading.id}`}
+                           className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+                            {heading.text}
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        </aside>
+    );
+};
+
+export default Sidebar;

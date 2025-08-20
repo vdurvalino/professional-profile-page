@@ -24,6 +24,9 @@ export type LocaleSchema = {
     emailSentErrorGeneric: string;
     emailSentErrorConnection: string;
     sending: string;
+    blog: string
+    seeAll: string
+    latestArticles: string
 };
 
 const translations = {pt, en};

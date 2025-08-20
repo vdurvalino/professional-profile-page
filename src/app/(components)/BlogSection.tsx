@@ -1,44 +1,24 @@
+'use client';
+
 import React from 'react';
 import {ArrowRight, BookOpen, Calendar} from 'lucide-react';
 import Link from "next/link";
+import { posts } from '@/data/posts';
+import { useAppStore } from '@/stores/app-store';
 
 export const BlogSection: React.FC = () => {
-    const blogPosts = [
-        {
-            id: 1,
-            title: "Migrando de Monolito para Microserviços: Lições Aprendidas",
-            excerpt: "Como realizamos a migração gradual de uma aplicação monolítica legada para uma arquitetura de microserviços, os desafios encontrados e as soluções implementadas.",
-            date: "15 Jan 2024",
-            readTime: "8 min de leitura",
-            tags: ["Arquitetura", "DevOps", "Docker"]
-        },
-        {
-            id: 2,
-            title: "Otimizando Performance em React: Do Bundle ao Runtime",
-            excerpt: "Técnicas avançadas para otimizar aplicações React em produção, desde code splitting até lazy loading e memoização eficiente.",
-            date: "10 Jan 2024",
-            readTime: "12 min de leitura",
-            tags: ["React", "Performance", "Frontend"]
-        },
-        {
-            id: 3,
-            title: "n8n + IA: Automatizando Processos com Inteligência",
-            excerpt: "Como integrar workflows n8n com modelos de IA para criar automações inteligentes que aprendem e se adaptam.",
-            date: "05 Jan 2024",
-            readTime: "10 min de leitura",
-            tags: ["n8n", "IA", "Automação"]
-        }
-    ];
+    const { t: translations } = useAppStore();
+    const blogPosts = posts.slice(0, 3);
 
     return (
         <section className="mb-20">
             <div className="flex items-center justify-between mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
-                    Últimos Artigos
+                    {translations?.latestArticles}
                 </h2>
                 <Link href="/blog"
                       className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
-                    Ver todos
+                    {translations?.seeAll}
                     <ArrowRight className="w-4 h-4"/>
                 </Link>
             </div>
