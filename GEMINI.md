@@ -80,10 +80,50 @@ A página "Sobre" oferece um mergulho profundo na trajetória profissional e nas
 * Oferece botões diretos para "Entrar em Contato" ou "Ver Projetos", guiando o usuário de forma eficaz pela jornada no site.
 
 ### Projects
+A página de "Projetos" é onde o desenvolvedor exibe um portfólio detalhado de seus trabalhos. O objetivo é fornecer "cases" de sucesso que demonstram não apenas a habilidade técnica, mas também a capacidade de resolver problemas de negócio e entregar resultados mensuráveis.
+
+#### Filtro de Tecnologias
+*   Uma funcionalidade de filtro permite que os visitantes (especialmente recrutadores e Tech Leads) selecionem tecnologias específicas (ex: "React", "Next.js", "Node.js").
+*   Ao selecionar uma ou mais tecnologias, a lista de projetos é atualizada dinamicamente para mostrar apenas aqueles que utilizaram as tecnologias escolhidas.
+*   Isso facilita a busca por experiências relevantes e demonstra a amplitude do conhecimento do desenvolvedor.
+
+#### Lista de Projetos
+*   Cada projeto é apresentado em um layout de grade, alternando a posição da imagem e do texto para criar uma experiência visualmente dinâmica.
+*   **Imagem do Projeto:** Uma imagem de alta qualidade representa visualmente o projeto.
+*   **Título e Descrição:** Um título claro e uma descrição que resume o desafio e a solução.
+*   **Destaques (Highlights):** Uma lista de pontos-chave que ressaltam as principais conquistas e responsabilidades no projeto (ex: "Liderança na arquitetura do front-end", "Redução de 86% no tempo de carregamento").
+*   **Stack de Tecnologias:** Ícones ou tags que listam as tecnologias usadas, com destaque para aquelas selecionadas no filtro.
+*   **Metadados:** Informações como duração do projeto, tamanho da equipe e o papel específico do desenvolvedor (ex: "Desenvolvedor Front-end", "Tech Lead").
+*   **Links:** Botões de "Ver estudo de caso" (que leva a uma página de detalhes do projeto) e "Ver projeto ao vivo" (link externo).
+
+#### Call to Action (CTA)
+*   No final da página, uma seção de CTA convida o visitante a iniciar uma conversa sobre um novo projeto, direcionando-o para a página de contato.
 
 ### Blog
+A página de "Blog" serve como uma plataforma para o desenvolvedor compartilhar conhecimento, insights e tutoriais sobre desenvolvimento de software. O objetivo é demonstrar expertise, se posicionar como uma autoridade em determinados assuntos e contribuir para a comunidade técnica.
+
+#### Lista de Artigos
+*   Os artigos são exibidos em um layout de grade, com cartões que facilitam a leitura e a navegação.
+*   Cada cartão de artigo contém:
+    *   **Título:** O título do post, que é um link para a página de detalhes do artigo.
+    *   **Resumo (Excerpt):** Um parágrafo curto que resume o conteúdo do artigo.
+    *   **Metadados:** Data de publicação e tempo estimado de leitura, informações úteis para o leitor.
+    *   **Tags:** Categorias ou tecnologias relacionadas ao artigo (ex: "Arquitetura", "React", "IA"), que ajudam na organização e descoberta de conteúdo.
 
 ### Contact
+A página de "Contato" é o ponto final da jornada do usuário no site, projetada para ser simples, direta e eficaz. O objetivo é facilitar ao máximo o início de uma conversa, seja para oportunidades de trabalho, projetos ou colaborações.
+
+#### Informações de Contato
+*   A página reutiliza a `ContactSection`, que é uma seção padronizada em todo o site.
+*   **Chamada para Ação:** Uma mensagem clara e convidativa, como "Vamos Trabalhar Juntos?".
+*   **Links Diretos:** Ícones e links para os canais de contato preferidos:
+    *   E-mail
+    *   GitHub
+    *   LinkedIn
+*   **Formulário de Mensagem Rápida:**
+    *   Um formulário simples para que o visitante possa enviar uma mensagem diretamente pelo site.
+    *   Campos: Nome, E-mail e Mensagem.
+    *   Este formulário está conectado a uma API (`/api/send-notification`) que envia a mensagem para o desenvolvedor, provavelmente via e-mail ou uma ferramenta de automação como o n8n.
 
 ## Design System
 
@@ -107,7 +147,6 @@ Ele deve ser aplicado em todas as páginas, independentemente da estrutura ou co
   - Texto secundário: `dark:text-gray-400`
 
 - **Destaques**
-  - Cor primária: `text-primary`, `bg-primary`
   - Usada em botões, títulos e ícones de destaque.
 
 ---
@@ -143,7 +182,7 @@ Ele deve ser aplicado em todas as páginas, independentemente da estrutura ou co
   - Cores adaptadas ao tema claro/escuro
 
 - **Links**
-  - Estilo padrão: `text-primary hover:underline`
+  - Estilo padrão: `hover:underline`
 
 ---
 
@@ -165,6 +204,46 @@ Ele deve ser aplicado em todas as páginas, independentemente da estrutura ou co
   - Fundo com cor primária
   - Texto centralizado
   - Botão com contraste (ex.: fundo branco + texto primário)
+
+- **Button.tsx**
+  - **Motivação**: Criar um componente de botão padronizado e reutilizável, evitando a necessidade de instalar bibliotecas de UI completas como Radix ou Chakra UI. A abordagem utiliza `tailwind-variants` para garantir consistência visual e flexibilidade, permitindo a criação de uma API de componentes coesa e leve.
+  - **Como Usar**: O componente `Button` aceita props para customizar sua aparência e comportamento. Além disso, ele é polimórfico, o que significa que pode ser renderizado como diferentes elementos HTML (ex: `<a>`, `Link` do Next.js) usando a prop `as`.
+
+  - **Props Principais**:
+    - `variant`: Define o estilo visual do botão.
+        - `solid` (padrão): Fundo sólido, alto contraste.
+        - `outline`: Com borda, fundo transparente ou leve.
+        - `ghost`: Sem fundo e sem borda, ideal para ações secundárias.
+    - `size`: Define o tamanho do botão.
+        - `xs`: Extra pequeno.
+        - `sm`: Pequeno.
+        - `md` (padrão): Médio.
+        - `lg`: Grande.
+    - `as`: Permite renderizar o botão como outro componente ou tag HTML. Por exemplo, `as={Link}` para navegação.
+
+  - **Exemplos de Uso**:
+
+    1.  **Botão Básico (padrão `solid`, `md`)**
+        ```tsx
+        <Button>Clique Aqui</Button>
+        ```
+
+    2.  **Botão com Variante e Tamanho**
+        ```tsx
+        <Button variant="outline" size="sm">
+          <Menu />
+        </Button>
+        ```
+
+    3.  **Botão Polimórfico (renderizado como Link)**
+        ```tsx
+        import Link from 'next/link';
+        import { Button } from '@/components/ui/Button';
+
+        <Button as={Link} href="/projects" size="lg">
+          Ver projetos
+        </Button>
+        ```
 
 ---
 
@@ -188,6 +267,7 @@ Ele deve ser aplicado em todas as páginas, independentemente da estrutura ou co
 
 *   **Estrutura de Componentes:** Componentes específicos de uma página devem residir em um subdiretório `(components)` dentro da pasta da própria página (ex: `@/app/about/(components)`). Componentes que são reutilizados em múltiplas páginas devem ser colocados no diretório global `@/components`.
 *   **Biblioteca de Ícones:** A biblioteca de ícones padrão para este projeto é a `lucide-react`.
+*   **Client components:** Evite ao máximo usar client components e procure sempre isolar os componentes que precisam ser renderizados em ClientSide.
 
 ## Conclusão
 
