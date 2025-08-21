@@ -5,6 +5,7 @@ import {ArrowRight, Award, Calendar, Code2, ExternalLink, Filter, Search, Sparkl
 import {projects} from '@/data/projects';
 import Link from "next/link";
 import Image from "next/image";
+import {Button} from "@/components/ui/Button";
 
 const ProjectsPage = () => {
     const [selectedTech, setSelectedTech] = useState<string[]>([]);
@@ -68,9 +69,10 @@ const ProjectsPage = () => {
                     </div>
 
                     {/* Filter Button */}
-                    <button
+                    <Button
                         onClick={() => setShowFilters(!showFilters)}
-                        className="mt-6 inline-flex items-center gap-2 px-6 py-3 bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all"
+                        size={"lg"}
+                        className="mt-6"
                     >
                         <Filter className="w-4 h-4"/>
                         Filtrar por tecnologia
@@ -79,27 +81,25 @@ const ProjectsPage = () => {
                               {selectedTech.length}
                             </span>
                         )}
-                    </button>
+                    </Button>
                 </div>
             </div>
 
             {/* Filters Section */}
             {showFilters && (
-                <div className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 py-6">
+                <div className="bg-white dark:bg-slate-800 border-b border-gray-200 dark:border-gray-700 py-6">
                     <div className="container mx-auto px-6">
                         <div className="flex flex-wrap gap-2 justify-center">
                             {allTechnologies.map(tech => (
-                                <button
+                                <Button
+                                    size={"sm"}
+                                    variant={selectedTech.includes(tech) ? "solid" : "outline"}
                                     key={tech}
                                     onClick={() => toggleTech(tech)}
-                                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                                        selectedTech.includes(tech)
-                                            ? 'bg-gray-900 text-white dark:bg-white dark:text-gray-900'
-                                            : 'bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
-                                    }`}
+                                    className={`rounded-full text-sm`}
                                 >
                                     {tech}
-                                </button>
+                                </Button>
                             ))}
                         </div>
                     </div>
@@ -216,14 +216,12 @@ const ProjectsPage = () => {
 
                                     {/* CTA Buttons */}
                                     <div className="flex flex-wrap gap-4 pt-4">
-                                        <Link
-                                            href={`/projects/${project.id}`}
-                                            className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-all duration-300 font-medium group"
-                                        >
+                                        <Button as={Link} size={"lg"} href={`/projects/${project.id}`}>
                                             Ver estudo de caso
                                             <ArrowRight
-                                                className="w-4 h-4 group-hover:translate-x-1 transition-transform"/>
-                                        </Link>
+                                                className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                                            />
+                                        </Button>
 
                                         {project?.liveUrl && (
                                             <a
@@ -260,9 +258,11 @@ const ProjectsPage = () => {
                             onClick={clearFilters}
                             className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors"
                         >
+                        <Button onClick={clearFilters} size={"lg"}>
                             Limpar filtros
                             <X className="w-4 h-4"/>
                         </button>
+                        </Button>
                     </div>
                 )}
             </div>

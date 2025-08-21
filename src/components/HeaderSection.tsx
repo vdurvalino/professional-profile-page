@@ -4,6 +4,7 @@ import React, {useEffect} from 'react';
 import {Github, Linkedin, Menu, Moon, Sun} from 'lucide-react';
 import {useAppStore} from "@/stores/app-store";
 import Link from "next/link";
+import {Button} from "@/components/ui/Button";
 import {Logo} from "@/components/ui/Logo";
 
 const pages: { href: string, name: string }[] = [
@@ -30,55 +31,42 @@ export const HeaderSection: React.FC = () => {
                     <Logo/>
 
                     {/* Navigation */}
-                    <nav className="md:flex items-center gap-6">
-                        <Link href="/" className={`text-sm font-medium transition-colors text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white`}>
-                            Home
-                        </Link>
-                        <Link href="/about" className={`text-sm font-medium transition-colors text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white`}>
-                            Sobre
-                        </Link>
-                        <Link href="/projects" className={`text-sm font-medium transition-colors text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white`}>
-                            Projetos
-                        </Link>
-                        <Link href="/blog" className={`text-sm font-medium transition-colors text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white`}>
-                            Blog
-                        </Link>
-                        <Link href="/contact" className={`text-sm font-medium transition-colors text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white`}>
-                            Contato
-                        </Link>
+                    <nav className="hidden md:flex items-center gap-6">
+                        {pages.map(( {href, name} ) => (
+                            <Link
+                                key={href}
+                                href={href}
+                                className={`text-sm font-medium transition-colors text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white`}
+                            >
+                                {name}
+                            </Link>
+                        ))}
                     </nav>
+                    <Button variant={"outline"} size={"sm"} className={"block md:hidden"}><Menu/></Button>
 
-                    <div className="flex items-center gap-2">
-                        <Link href="https://github.com/vdurvalino/"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="px-2 py-1 text-sm font-mono cursor-pointer rounded transition-all
-                  bg-gray-200 border border-transparent hover:bg-gray-300
-                  dark:bg-gray-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:text-gray-100
-                  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 focus:border-gray-600
-                  dark:focus:ring-offset-gray-900"
+                    <div className="hidden md:flex items-center gap-2">
+                        <Button
+                            variant={"outline"}
+                            size={'xs'}
+                            as={Link}
+                            href="https://github.com/vdurvalino/"
+                            target="_blank"
                         >
                             <Github className="w-5 h-5"/>
-                        </Link>
-                        <Link
+                        </Button>
+                        <Button
+                            variant={"outline"}
+                            size={'xs'}
+                            as={Link}
                             href="https://www.linkedin.com/in/vinicius-d-de-souza-b745a41bb/"
                             target="_blank"
-                            rel="noopener noreferrer"
-                            className="px-2 py-1 text-sm font-mono cursor-pointer rounded transition-all
-                  bg-gray-200 border border-transparent hover:bg-gray-300
-                  dark:bg-gray-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:text-gray-100
-                  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 focus:border-gray-600
-                  dark:focus:ring-offset-gray-900"
                         >
                             <Linkedin className="w-5 h-5"/>
-                        </Link>
-                        <button
+                        </Button>
+                        <Button
+                            variant={"outline"}
+                            size={'xs'}
                             onClick={toggleDarkMode}
-                            className="px-2 py-1 text-sm font-mono cursor-pointer rounded transition-all
-                  bg-gray-200 border border-transparent hover:bg-gray-300
-                  dark:bg-gray-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:text-gray-100
-                  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 focus:border-gray-600
-                  dark:focus:ring-offset-gray-900"
                             aria-label="Toggle dark mode"
                         >
                             {isDarkMode ? (
@@ -86,18 +74,15 @@ export const HeaderSection: React.FC = () => {
                             ) : (
                                 <Moon className="w-5 h-5"/>
                             )}
-                        </button>
-
-                        <button
+                        </Button>
+                        <Button
+                            variant={"outline"}
+                            size={'xs'}
                             onClick={() => setLanguage(language === 'pt' ? 'en' : 'pt')}
-                            className="px-2 py-1 text-sm font-mono cursor-pointer rounded transition-all
-                  bg-gray-200 border border-transparent hover:bg-gray-300
-                  dark:bg-gray-700 dark:border-gray-600 dark:hover:bg-gray-600 dark:text-gray-100
-                  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-600 focus:border-gray-600
-                  dark:focus:ring-offset-gray-900"
+                            aria-label="Toggle Language"
                         >
                             {language === 'pt' ? 'EN' : 'PT'}
-                        </button>
+                        </Button>
                     </div>
                 </div>
             </div>

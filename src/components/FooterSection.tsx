@@ -1,6 +1,7 @@
 import React from 'react';
-import {Coffee, Github, Linkedin, Mail, Terminal} from 'lucide-react';
+import {Coffee, Github, Linkedin, Mail} from 'lucide-react';
 import Link from "next/link";
+import {Button} from "@/components/ui/Button";
 import {Logo} from "@/components/ui/Logo";
 
 export const FooterSection: React.FC = () => {
@@ -48,28 +49,35 @@ export const FooterSection: React.FC = () => {
                     <div>
                         <h4 className="font-semibold text-gray-900 dark:text-white mb-4">Conecte-se</h4>
                         <div className="flex gap-3">
-                            <Link
+                            <Button
+                                size={"xs"}
+                                variant={"outline"}
+
+                                as={Link}
                                 href="https://github.com/vdurvalino/"
                                 target="_blank"
-                                rel="noopener noreferrer"
-                                className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
                             >
-                                <Github className="w-5 h-5 text-gray-600 dark:text-gray-400"/>
-                            </Link>
-                            <Link
+                                <Github className="w-5 h-5"/>
+                            </Button>
+                            <Button
+                                size={"xs"}
+                                variant={"outline"}
+
+                                as={Link}
                                 href="https://www.linkedin.com/in/vinicius-d-de-souza-b745a41bb/"
                                 target="_blank"
-                                rel="noopener noreferrer"
-                                className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
                             >
-                                <Linkedin className="w-5 h-5 text-gray-600 dark:text-gray-400"/>
-                            </Link>
-                            <Link
+                                <Linkedin className="w-5 h-5"/>
+                            </Button>
+                            <Button
+                                size={"xs"}
+                                variant={"outline"}
+
+                                as={Link}
                                 href="mailto:contact@durvalino.dev"
-                                className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
                             >
-                                <Mail className="w-5 h-5 text-gray-600 dark:text-gray-400"/>
-                            </Link>
+                                <Mail className="w-5 h-5"/>
+                            </Button>
                         </div>
                     </div>
                 </div>

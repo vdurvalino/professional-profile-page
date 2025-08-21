@@ -3,6 +3,13 @@ import {Github, Linkedin} from 'lucide-react';
 import Link from "next/link";
 import Image from "next/image";
 import heroPic from "@/../public/home-page-hero.png"
+import nextPic from "@/../public/tech/next.png"
+import githubPic from "@/../public/tech/github.png"
+import dockerPic from "@/../public/tech/docker.png"
+import reactPic from "@/../public/tech/react.png"
+import tailwindPic from "@/../public/tech/tailwind.png"
+import vercelPic from "@/../public/tech/vercel.svg"
+import {Button} from "@/components/ui/Button";
 
 export const HeroSection: React.FC = () => {
 
@@ -27,23 +34,27 @@ export const HeroSection: React.FC = () => {
                     </p>
 
                     <div className="flex flex-wrap gap-4 justify-start">
-                        <Link href="https://github.com/vdurvalino/"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-2 px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors"
+                        <Button
+                            size={"lg"}
+                            as={Link}
+                            href="https://github.com/vdurvalino/"
+                            target="_blank"
+                            className={"px-8"}
                         >
                             <Github className="w-5 h-5"/>
                             GitHub
-                        </Link>
-                        <Link
+                        </Button>
+                        <Button
+                            size={"lg"}
+                            variant={"outline"}
+                            as={Link}
                             href="https://www.linkedin.com/in/vinicius-d-de-souza-b745a41bb/"
                             target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+                            className={"px-8"}
                         >
                             <Linkedin className="w-5 h-5"/>
                             LinkedIn
-                        </Link>
+                        </Button>
                     </div>
                 </div>
 

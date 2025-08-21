@@ -3,6 +3,7 @@ import {ArrowRight, Sparkles} from 'lucide-react';
 import Link from "next/link";
 import {projects} from "@/data/projects";
 import Image from "next/image";
+import {Button} from "@/components/ui/Button";
 
 export const ProjectsSection: React.FC = () => {
     return (
@@ -11,11 +12,15 @@ export const ProjectsSection: React.FC = () => {
                 <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
                     Projetos em Destaque
                 </h2>
-                <Link href="/projects"
-                      className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+
+                <Button
+                    variant={"ghost"}
+                    as={Link}
+                    href="/projects"
+                >
                     Ver todos
                     <ArrowRight className="w-4 h-4"/>
-                </Link>
+                </Button>
             </div>
 
             <div className="space-y-24">
@@ -66,11 +71,10 @@ export const ProjectsSection: React.FC = () => {
 
                             {/* Button */}
                             <div className="mt-8">
-                                <Link href={`/projects/${project.id}`}
-                                      className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors font-medium">
+                                <Button size={'lg'} as={Link} href={`/projects/${project.id}`}>
                                     Ver estudo de caso
                                     <ArrowRight className="w-4 h-4"/>
-                                </Link>
+                                </Button>
                             </div>
                         </div>
                     </div>
@@ -79,13 +83,10 @@ export const ProjectsSection: React.FC = () => {
 
             {/* View All Projects Link */}
             <div className="text-center mt-16">
-                <Link
-                    href="/projects"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors"
-                >
+                <Button size={'lg'} variant={"outline"} as={Link} href={`/projects`}>
                     Ver Todos os Projetos
                     <ArrowRight className="w-4 h-4"/>
-                </Link>
+                </Button>
             </div>
         </section>
     );

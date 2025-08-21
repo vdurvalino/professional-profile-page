@@ -2,6 +2,7 @@
 
 import { BrainCircuit, Cloud, Database, Server, MonitorSmartphone, Code2 } from 'lucide-react';
 import { useState } from 'react';
+import {Button} from "@/components/ui/Button";
 
 const stack = {
   frontend: {
@@ -123,24 +124,28 @@ export const DetailedStack = () => {
                       <>
                         <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-white dark:from-gray-800 to-transparent pointer-events-none" />
                         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-full flex justify-center">
-                          <button
+                          <Button
+                              variant="outline"
+                              size={"xs"}
                               onClick={() => toggleExpanded(key)}
-                              className="cursor-pointer bg-gray-100/50 dark:bg-gray-700/50 backdrop-blur-sm text-gray-600 dark:text-gray-300 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-200/70 dark:hover:bg-gray-600/70 transition-colors duration-300"
+                              className="rounded-full border-gray-200"
                           >
                             Ver Mais
-                          </button>
+                          </Button>
                         </div>
                       </>
                   )}
 
                   {expanded[key] && category.items.length > 3 && (
                     <div className="mt-6 text-center">
-                      <button
-                        onClick={() => toggleExpanded(key)}
-                        className="cursor-pointer bg-gray-100/50 dark:bg-gray-700/50 backdrop-blur-sm text-gray-600 dark:text-gray-300 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-200/70 dark:hover:bg-gray-600/70 transition-colors duration-300"
+                      <Button
+                          variant="outline"
+                          size={"xs"}
+                          onClick={() => toggleExpanded(key)}
+                          className="rounded-full border-gray-200"
                       >
                         Ver Menos
-                      </button>
+                      </Button>
                     </div>
                   )}
                 </div>

@@ -3,8 +3,9 @@
 import React from 'react';
 import {ArrowRight, BookOpen, Calendar} from 'lucide-react';
 import Link from "next/link";
-import { posts } from '@/data/posts';
-import { useAppStore } from '@/stores/app-store';
+import {posts} from '@/data/posts';
+import {useAppStore} from '@/stores/app-store';
+import {Button} from "@/components/ui/Button";
 
 export const BlogSection: React.FC = () => {
     const { t: translations } = useAppStore();
@@ -16,11 +17,15 @@ export const BlogSection: React.FC = () => {
                 <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
                     {translations?.latestArticles}
                 </h2>
-                <Link href="/blog"
-                      className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
-                    {translations?.seeAll}
+
+                <Button
+                    variant={"ghost"}
+                    as={Link}
+                    href="/blog"
+                >{translations?.seeAll}
+
                     <ArrowRight className="w-4 h-4"/>
-                </Link>
+                </Button>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

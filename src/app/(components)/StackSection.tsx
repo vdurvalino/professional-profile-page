@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from "next/link";
 import {ArrowRight} from "lucide-react";
+import {Button} from "@/components/ui/Button";
 
 export const StackSection: React.FC = () => {
     const techStack = {
@@ -38,13 +39,15 @@ export const StackSection: React.FC = () => {
 
         {/* View Stack Link */}
         <div className="text-center mt-16">
-            <Link
+            <Button
+                size={"lg"}
+                as={Link}
                 href="/about#stack"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors"
             >
                 Detalhar Stack
                 <ArrowRight className="w-4 h-4"/>
-            </Link>
+            </Button>
         </div>
     </section>);
 };
