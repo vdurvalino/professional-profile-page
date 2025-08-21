@@ -13,6 +13,14 @@ import {Button} from "@/components/ui/Button";
 
 export const HeroSection: React.FC = () => {
 
+    const techs = [
+        {src: nextPic, title: "Next.js"},
+        {src: reactPic, title: "React"},
+        {src: tailwindPic, title: "Tailwind CSS"},
+        {src: githubPic, title: "GitHub"},
+        {src: vercelPic, title: "Vercel"},
+        {src: dockerPic, title: "Docker"}]
+
     return (
         <section className="mb-50">
             <div className="flex flex-col md:flex-row gap-12 items-center">
@@ -58,15 +66,32 @@ export const HeroSection: React.FC = () => {
                     </div>
                 </div>
 
-                <Image
-                    src={heroPic.src}
-                    alt={"Vinícius"}
-                    width={600}
-                    height={500}
-                    priority={true}
-
-                    className={"flex-1"}
-                />
+                <div className={"relative flex-1"}>
+                    <Image
+                        src={heroPic.src}
+                        alt={"A foto do desenvolvedor dentro de um Monitor de computador e dentro de um Smartphone"}
+                        width={600}
+                        height={500}
+                        priority={true}
+                    />
+                    <div className={"absolute bottom-0 md:bottom-10 left-4 md:left-15 grid grid-cols-3 gap-4"}>
+                        {techs.map(( {src, title} ) => (
+                            <div
+                                key={title}
+                                title={title}
+                                className={"w-10 md:w-14 h-10 md:h-14 p-2 flex justify-center items-center bg-gray-200/80 dark:bg-gray-700 rounded-full"}
+                            >
+                                <Image
+                                    src={src}
+                                    alt={title}
+                                    width={30}
+                                    height={30}
+                                    priority={true}
+                                />
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </div>
         </section>
     );
