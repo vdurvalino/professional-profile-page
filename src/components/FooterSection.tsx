@@ -1,6 +1,7 @@
 import React from 'react';
 import {Coffee, Github, Linkedin, Mail, Terminal} from 'lucide-react';
 import Link from "next/link";
+import {Logo} from "@/components/ui/Logo";
 
 export const FooterSection: React.FC = () => {
     return (
@@ -8,16 +9,8 @@ export const FooterSection: React.FC = () => {
             <div className="max-w-6xl mx-auto px-6 py-12">
                 <div className="grid md:grid-cols-3 gap-8 mb-8">
                     <div>
-                        <div className="flex items-center gap-3 mb-4">
-                            <div
-                                className="w-10 h-10 bg-gray-900 dark:bg-white rounded-lg flex items-center justify-center">
-                                <Terminal className="w-6 h-6 text-white dark:text-gray-900"/>
-                            </div>
-                            <div className="font-mono text-sm text-gray-600 dark:text-gray-400">
-                                Vinícius Durvalino
-                            </div>
-                        </div>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">
+                        <Logo/>
+                        <p className="text-sm text-gray-600 dark:text-gray-400 mt-4">
                             Desenvolvedor Fullstack dedicado a criar soluções elegantes para problemas complexos.
                         </p>
                     </div>

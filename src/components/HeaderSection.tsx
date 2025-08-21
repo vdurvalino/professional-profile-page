@@ -1,9 +1,18 @@
 'use client'
 
 import React, {useEffect} from 'react';
-import {Github, Linkedin, Moon, Sun} from 'lucide-react';
+import {Github, Linkedin, Menu, Moon, Sun} from 'lucide-react';
 import {useAppStore} from "@/stores/app-store";
 import Link from "next/link";
+import {Logo} from "@/components/ui/Logo";
+
+const pages: { href: string, name: string }[] = [
+    {href: "/", name: "Home"},
+    {href: "/about", name: "Sobre"},
+    {href: "/projects", name: "Projetos"},
+    {href: "/blog", name: "Blog"},
+    {href: "/contact", name: "Contato"},
+]
 
 export const HeaderSection: React.FC = () => {
     const {isDarkMode, language, toggleDarkMode, setLanguage, initializeTheme} = useAppStore();
@@ -18,12 +27,7 @@ export const HeaderSection: React.FC = () => {
         >
             <div className="max-w-6xl mx-auto px-6 py-4">
                 <div className="flex justify-between items-center">
-                    <div className="flex items-center gap-3">
-                        {/*<Image src={"https://github.com/vdurvalino.png"} alt={"Vinícius Durvalino's profile picture"} width={40} height={40} className={"w-10 h-10 rounded-full"}/>*/}
-                        <div className="text-md font-mono font-semibold text-gray-600 dark:text-gray-400">
-                            &lt;<span className="ml-0.5">Vinícius <span className={"text-green-600"}>Durvalino</span></span> /&gt;
-                        </div>
-                    </div>
+                    <Logo/>
 
                     {/* Navigation */}
                     <nav className="md:flex items-center gap-6">
