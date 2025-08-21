@@ -7,7 +7,7 @@ import {Button} from "@/components/ui/Button";
 
 export const ProjectsSection: React.FC = () => {
     return (
-        <section className="mb-20">
+        <section className="mb-40">
             <div className="flex items-center justify-between mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
                     Projetos em Destaque
@@ -34,8 +34,11 @@ export const ProjectsSection: React.FC = () => {
                             <Image
                                 src={project.image}
                                 alt={project.title}
+                                placeholder={"blur"}
+                                blurDataURL={project.image}
                                 fill={true}
                                 className={"object-cover rounded-lg"}
+                                quality={100}
                             />
                         </div>
 

@@ -1,5 +1,3 @@
-// app/about/(components)/CTA.tsx
-
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
@@ -22,12 +20,10 @@ export const CTA = () => {
             >
               Entre em Contato
               <ArrowRight className="ml-2 w-5 h-5" />
-
-
             </Link>
             <Link
                 href="/projects"
-                className="inline-flex items-center justify-center bg-transparent border-2 border-white text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-800 hover:text-gray-200 transition-colors duration-300"
+                className="inline-flex items-center justify-center bg-transparent border-1 border-white text-white font-bold py-3 px-6 rounded-lg hover:bg-gray-800 hover:text-gray-200 transition-colors duration-300"
             >
               Ver Projetos
             </Link>

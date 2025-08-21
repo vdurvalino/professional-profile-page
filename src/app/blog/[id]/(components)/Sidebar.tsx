@@ -1,6 +1,7 @@
 'use client';
 
 import React, {useEffect, useState} from 'react';
+import Link from "next/link";
 
 interface Heading {
     id: string;
@@ -29,15 +30,17 @@ const Sidebar: React.FC<SidebarProps> = ( {content} ) => {
 
     return (
         <aside
-            className="sticky top-24 p-6 bg-gray-50 dark:bg-gray-800/20 rounded-lg border border-gray-200 dark:border-gray-700/50 h-fit">
-            <h3 className="text-lg font-semibold mb-4">On this page</h3>
+            className="sticky top-24 p-6 bg-gray-50 dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-600 h-fit">
+            <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">On this page</h3>
             <ul className="space-y-2">
                 {headings.map(( heading ) => (
                     <li key={heading.id} style={{marginLeft: `${(heading.level - 2) * 1}rem`}}>
-                        <a href={`#${heading.id}`}
-                           className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+                        <Link
+                            href={`#${heading.id}`}
+                           className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors focus:ring-none focus:outline-none focus:border-b"
+                        >
                             {heading.text}
-                        </a>
+                        </Link>
                     </li>
                 ))}
             </ul>

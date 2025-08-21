@@ -41,7 +41,7 @@ const ProjectsPage = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50 dark:bg-slate-900">
+        <div className="min-h-screen bg-gray-50 dark:bg-slate-900 pb-40">
             {/* Hero Section - versão minimalista */}
             <div className="bg-gray-50 dark:bg-slate-900 border-b border-gray-200 dark:border-gray-800">
                 <div className="container mx-auto px-6 py-24 text-center">
@@ -52,21 +52,6 @@ const ProjectsPage = () => {
                         Soluções digitais que entregam valor real e resultados medidos.
                     </p>
 
-                    {/* Stats */}
-                    <div className="flex flex-wrap justify-center gap-8 mb-10">
-                        <div className="text-center">
-                            <p className="text-3xl font-bold text-primary">20+</p>
-                            <p className="text-gray-500 dark:text-gray-400 text-sm">
-                                projetos entregues
-                            </p>
-                        </div>
-                        <div className="text-center">
-                            <p className="text-3xl font-bold text-primary">10+</p>
-                            <p className="text-gray-500 dark:text-gray-400 text-sm">
-                                anos de experiência
-                            </p>
-                        </div>
-                    </div>
 
                     {/* Filter Button */}
                     <Button
@@ -139,7 +124,8 @@ const ProjectsPage = () => {
                                         index % 2 !== 0 ? 'md:order-last' : ''
                                     }`}
                                 >
-                                    <Image src={project.image} alt={project.title} fill={true} className={"object-cover"}/>
+                                    <Image src={project.image} alt={project.title} fill={true}
+                                           className={"object-cover"}/>
 
                                     {/* Featured Badge */}
                                     {project.featured && (
@@ -254,21 +240,16 @@ const ProjectsPage = () => {
                         <p className="text-gray-600 dark:text-gray-400 mb-8 max-w-md mx-auto">
                             Tente ajustar seus filtros ou termos de busca para encontrar o que procura.
                         </p>
-                        <button
-                            onClick={clearFilters}
-                            className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors"
-                        >
                         <Button onClick={clearFilters} size={"lg"}>
                             Limpar filtros
                             <X className="w-4 h-4"/>
-                        </button>
                         </Button>
                     </div>
                 )}
             </div>
 
             {/* CTA Section */}
-            <div className="bg-gradient-to-r from-gray-900 to-gray-800 dark:from-primary dark:to-primary-dark py-16 mt-32 mb-40">
+            <div className="bg-gradient-to-r from-gray-900 to-gray-800 dark:from-gray-800 dark:to-gray-700 py-16 mt-32">
                 <div className="container mx-auto px-6 text-center">
                     <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                         Tem um projeto em mente?

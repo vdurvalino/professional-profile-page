@@ -91,10 +91,10 @@ export const DetailedStack = () => {
             return (
                 <div
                     key={key}
-                    className="relative bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden"
+                    className="relative bg-white dark:bg-gray-700/50 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden"
                 >
                   <div className="flex items-center mb-6">
-                    <div className="text-primary mr-3">
+                    <div className="text-gray-700 dark:text-gray-200 mr-3">
                       {category.icon}
                     </div>
                     <h3 className="text-xl font-bold text-gray-800 dark:text-white">

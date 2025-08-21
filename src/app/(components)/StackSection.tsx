@@ -13,14 +13,15 @@ export const StackSection: React.FC = () => {
         IA: ["n8n", "Context/Prompt Engineering", "RAG", "MCP", "Gemini CLI"]
     };
 
-    return (<section className="mb-20">
+    return (
+        <section className="mb-40">
         <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">
             Stack Tecnológica
         </h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {Object.entries(techStack).map(( [category, techs] ) => (
                 <div key={category}
-                     className="bg-white dark:bg-gray-900/20 rounded-lg p-2 "
+                     className="bg-white shadow-sm border border-gray-200 dark:border-gray-700 dark:bg-gray-900/20 rounded-lg p-6"
                 >
                     <h3 className="font-semibold text-gray-900 dark:text-white mb-4 capitalize">
                         {category === 'devops' ? 'DevOps' : category}
@@ -28,7 +29,7 @@ export const StackSection: React.FC = () => {
                     <div className="flex flex-wrap gap-2">
                         {techs.map(( tech, index ) => (<span
                             key={index}
-                            className="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm font-mono"
+                            className="px-3 py-1 bg-gray-200 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 rounded-full text-sm font-mono"
                         >
                       {tech}
                     </span>))}
@@ -43,7 +44,6 @@ export const StackSection: React.FC = () => {
                 size={"lg"}
                 as={Link}
                 href="/about#stack"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors"
             >
                 Detalhar Stack
                 <ArrowRight className="w-4 h-4"/>

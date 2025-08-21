@@ -42,8 +42,9 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ params }) => {
         <div className="grid lg:grid-cols-4 gap-12">
           <div className="lg:col-span-3">
             <article>
-              <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
-              <div className="flex items-center gap-3 text-sm text-gray-500 dark:text-gray-500 mb-8">
+
+              <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">{post.title}</h1>
+              <div className="flex items-center gap-3 text-sm text-gray-500 dark:text-gray-300 mb-8">
                 <div className="flex items-center gap-1">
                   <Calendar className="w-4 h-4"/>
                   {post.date}
@@ -62,7 +63,7 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ params }) => {
                 {post.tags.map(( tag, index ) => (
                     <span
                         key={index}
-                        className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded text-xs"
+                        className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full text-xs"
                     >
                   #{tag}
                 </span>
@@ -78,4 +79,4 @@ const BlogPostPage: React.FC<BlogPostPageProps> = ({ params }) => {
   );
 };
 
-export default BlogPostPage;
+
