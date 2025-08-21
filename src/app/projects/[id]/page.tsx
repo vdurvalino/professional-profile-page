@@ -5,14 +5,15 @@ import Link from 'next/link';
 import Image from "next/image";
 import ReactMarkdown from "react-markdown"
 
+
 interface ProjectPageProps {
-  params: {
-    id: string;
-  };
+  id: string;
 }
 
-const ProjectPage: React.FC<ProjectPageProps> = ({ params }) => {
-  const project = projects.find((p) => p.id.toString() === params.id);
+export default async function ProjectPage({params}: {params: Promise<ProjectPageProps>}) {
+  const {id: projectId } = await params
+
+  const project = projects.find((p) => p.id.toString() === projectId);
 
   if (!project) {
     return (

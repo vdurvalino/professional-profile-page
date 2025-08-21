@@ -1,5 +1,3 @@
-'use client';
-
 import React from 'react';
 import { posts } from '@/data/posts';
 import { notFound } from 'next/navigation';
@@ -8,13 +6,13 @@ import Sidebar from './(components)/Sidebar';
 import Link from "next/link";
 
 interface BlogPostPageProps {
-  params: {
-    id: string;
-  };
+  id: string;
 }
 
-const BlogPostPage: React.FC<BlogPostPageProps> = ({ params }) => {
-  const post = posts.find((p) => p.id.toString() === params.id);
+export default async function BlogPage({params}: {params: Promise<BlogPostPageProps>}) {
+  const {id: blogId } = await params
+
+  const post = posts.find((p) => p.id.toString() === blogId);
 
   if (!post) {
     notFound();
