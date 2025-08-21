@@ -1,17 +1,21 @@
 import React from 'react';
 import {Github, Linkedin, Mail} from 'lucide-react';
 import Link from "next/link";
+import {twMerge} from "tailwind-merge";
+import {Button} from "@/components/ui/Button";
 
-export const ContactSection: React.FC = () => {
+type ContactSectionProps = { className?: string }
+
+export const ContactSection: React.FC<ContactSectionProps> = ( {className}: ContactSectionProps ) => {
     return (
-        <section className="mb-20">
+        <section className={twMerge("mb-40", className)}>
             <div
                 className="bg-white dark:bg-gray-900/20 rounded-lg p-8 border border-gray-200 dark:border-gray-700">
                 <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6 text-center">
                     Vamos Trabalhar Juntos?
                 </h2>
 
-                <p className="text-center text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
+                <p className="text-center text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
                     Estou sempre aberto a discutir novos projetos, ideias criativas ou oportunidades para fazer
                     parte de suas visões.
                 </p>
@@ -29,9 +33,9 @@ export const ContactSection: React.FC = () => {
                                     className="flex items-center gap-3 p-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors group"
                                 >
                                     <Mail
-                                        className="w-5 h-5 text-gray-500 group-hover:text-gray-700 dark:group-hover:text-gray-300"/>
+                                        className="w-5 h-5 text-gray-500 group-hover:text-gray-700 dark:group-hover:text-gray-400"/>
                                     <div>
-                                        <div className="text-sm text-gray-500 dark:text-gray-500">Email</div>
+                                        <div className="text-sm text-gray-500 dark:text-gray-400">Email</div>
                                         <div
                                             className="text-gray-700 dark:text-gray-300">contact@durvalino.dev
                                         </div>
@@ -45,9 +49,9 @@ export const ContactSection: React.FC = () => {
                                     className="flex items-center gap-3 p-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors group"
                                 >
                                     <Github
-                                        className="w-5 h-5 text-gray-500 group-hover:text-gray-700 dark:group-hover:text-gray-300"/>
+                                        className="w-5 h-5 text-gray-500 group-hover:text-gray-700 dark:group-hover:text-gray-400"/>
                                     <div>
-                                        <div className="text-sm text-gray-500 dark:text-gray-500">GitHub</div>
+                                        <div className="text-sm text-gray-500 dark:text-gray-400">GitHub</div>
                                         <div className="text-gray-700 dark:text-gray-300">@vdurvalino</div>
                                     </div>
                                 </Link>
@@ -59,9 +63,9 @@ export const ContactSection: React.FC = () => {
                                     className="flex items-center gap-3 p-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors group"
                                 >
                                     <Linkedin
-                                        className="w-5 h-5 text-gray-500 group-hover:text-gray-700 dark:group-hover:text-gray-300"/>
+                                        className="w-5 h-5 text-gray-500 group-hover:text-gray-700 dark:group-hover:text-gray-400"/>
                                     <div>
-                                        <div className="text-sm text-gray-500 dark:text-gray-500">LinkedIn</div>
+                                        <div className="text-sm text-gray-500 dark:text-gray-400">LinkedIn</div>
                                         <div className="text-gray-700 dark:text-gray-300">Vinícius Durvalino
                                         </div>
                                     </div>
@@ -97,12 +101,12 @@ export const ContactSection: React.FC = () => {
                         className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:border-transparent resize-none"
                     />
                             </div>
-                            <button
+                            <Button
                                 type="submit"
-                                className="w-full px-4 py-2 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-lg hover:bg-gray-800 dark:hover:bg-gray-100 transition-colors font-medium"
+                                className="w-full"
                             >
                                 Enviar Mensagem
-                            </button>
+                            </Button>
                         </form>
                     </div>
                 </div>
