@@ -64,6 +64,7 @@ export const HeroSection: React.FC = () => {
                             LinkedIn
                         </Button>
                     </div>
+                    Strong design
                 </div>
 
                 <div className={"relative flex-1"}>

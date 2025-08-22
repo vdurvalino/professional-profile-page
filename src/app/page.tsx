@@ -1,5 +1,5 @@
 import {HeroSection} from "@/app/(components)/HeroSection";
-import {StackSection} from "@/app/(components)/StackSection";
+import {StackSection} from "@/app/(components)/StackSection/";
 import {ProjectsSection} from "@/app/(components)/ProjectsSection";
 import {BlogSection} from "@/app/(components)/BlogSection";
 import {ContactSection} from "@/components/ContactSection";
