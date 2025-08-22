@@ -64,13 +64,19 @@ export const ProjectsCard: React.FC<ProjectsCardProps> = ( {project, index}: Pro
                 </ul>
 
                 {/* Tech Stack */}
-                <div className="mt-6 flex flex-wrap gap-2">
-                    {tech.map(( tech, i ) => (
+                <div className="mt-6 flex flex-wrap items-center gap-2">
+                    {tech.slice(0, 3).map((tech, i) => (
                         <span key={i}
                               className="px-3 py-1 bg-primary/15 dark:bg-primary-dark/15 text-gray-600 dark:text-gray-400 rounded-full text-sm font-mono">
-                                        {tech}
-                                    </span>
+                            {tech}
+                        </span>
                     ))}
+                    {tech.length > 3 && (
+                        <span
+                            className="px-3 py-1 bg-primary/15 dark:bg-primary-dark/15 text-gray-600 dark:text-gray-400 rounded-full text-sm font-mono">
+                            +{tech.length - 3}
+                        </span>
+                    )}
                 </div>
 
                 {/* Button */}
