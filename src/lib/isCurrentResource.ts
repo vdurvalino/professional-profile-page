@@ -13,6 +13,7 @@
  * fique ativo em todas as páginas, já que todo `pathname` começa com `/`.
  *
  * @param {string} href - O caminho do link que está sendo renderizado no menu de navegação.
+ * @param {string} pathname - O pathname atual.
  * @returns {boolean} - Retorna `true` se o `href` corresponde à página atual ou a uma seção pai da página atual.
  *
  * @example
