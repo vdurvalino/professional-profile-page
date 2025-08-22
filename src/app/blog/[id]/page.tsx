@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import {Calendar, BookOpen, ArrowLeft} from 'lucide-react';
 import Sidebar from './(components)/Sidebar';
 import Link from "next/link";
+import Image from "next/image"
 
 interface BlogPostPageProps {
   id: string;
@@ -29,7 +30,7 @@ export default async function BlogPage({params}: {params: Promise<BlogPostPagePr
   const contentWithIds = addIdsToHeadings(post.content);
 
   return (
-      <div className="max-w-6xl mx-auto px-6 py-16">
+      <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="mb-12">
           <Link href="/blog"
                 className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
@@ -41,8 +42,20 @@ export default async function BlogPage({params}: {params: Promise<BlogPostPagePr
           <div className="lg:col-span-3">
             <article>
 
-              <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">{post.title}</h1>
-              <div className="flex items-center gap-3 text-sm text-gray-500 dark:text-gray-300 mb-8">
+              <div className="relative h-60 md:h-96 mb-8">
+                <Image
+                    src={post.image}
+                    alt={post.title}
+                    priority={true}
+                    fill
+                    className={"object-cover rounded-lg"}
+                />
+              </div>
+              <h1 className="section mb-4">{post.title}</h1>
+              <p className="section-description">{post.excerpt}</p>
+
+              <div
+                  className="flex items-center gap-3 text-sm text-font-secondary dark:text-font-secondary-dark mb-8 mt-4">
                 <div className="flex items-center gap-1">
                   <Calendar className="w-4 h-4"/>
                   {post.date}
@@ -53,6 +66,8 @@ export default async function BlogPage({params}: {params: Promise<BlogPostPagePr
                   {post.readTime}
                 </div>
               </div>
+
+              <hr className={"border-gray-200 my-8"}/>
 
               <div className="block lg:hidden mb-8">
                 <Sidebar content={post.content}/>
@@ -65,7 +80,7 @@ export default async function BlogPage({params}: {params: Promise<BlogPostPagePr
                 {post.tags.map(( tag, index ) => (
                     <span
                         key={index}
-                        className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full text-xs"
+                        className="px-2 py-1 bg-primary/10 dark:bg-primary-dark/10 text-primary rounded-full text-xs"
                     >
                   #{tag}
                 </span>

@@ -80,11 +80,15 @@ export const DetailedStack = () => {
 
   return (
       <section id={"stack"} className="pb-16 pt-32">
-        <h2 className="text-3xl font-bold text-center text-gray-800 dark:text-white mb-12">
+        <h2 className="section text-center mb-3">
           Minha Stack Tecnológica
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">
+        <p className={"section-description text-center"}>
+          Tenho sólida experiência com as ferramentas abaixo, todas aplicadas em projetos reais.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start mt-12">
           {Object.entries(stack).map(([key, category]) => {
             const itemsToShow = expanded[key] ? category.items : category.items.slice(0, 3);
 

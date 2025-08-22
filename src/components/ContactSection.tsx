@@ -10,12 +10,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ( {className}: Cont
     return (
         <section className={twMerge("mb-40", className)}>
             <div
-                className="bg-white dark:bg-gray-900/20 rounded-lg p-8 border border-gray-200 dark:border-gray-700">
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6 text-center">
+                className="bg-surface dark:bg-surface-dark rounded-lg p-8 border border-gray-200 dark:border-gray-700">
+                <h2 className="section mb-6 text-center">
                     Vamos Trabalhar Juntos?
                 </h2>
 
-                <p className="text-center text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+                <p className="section-description text-center mb-8 max-w-2xl mx-auto">
                     Estou sempre aberto a discutir novos projetos, ideias criativas ou oportunidades para fazer
                     parte de suas visões.
                 </p>
@@ -85,21 +85,21 @@ export const ContactSection: React.FC<ContactSectionProps> = ( {className}: Cont
                                 <input
                                     type="text"
                                     placeholder="Seu nome"
-                                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:border-transparent"
+                                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary-dark focus:border-transparent"
                                 />
                             </div>
                             <div>
                                 <input
                                     type="email"
                                     placeholder="Seu email"
-                                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:border-transparent"
+                                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary-dark focus:border-transparent"
                                 />
                             </div>
                             <div>
                     <textarea
                         placeholder="Sua mensagem"
                         rows={4}
-                        className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white focus:border-transparent resize-none"
+                        className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary-dark focus:border-transparent resize-none"
                     />
                             </div>
                             <Button

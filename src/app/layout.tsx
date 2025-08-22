@@ -1,16 +1,21 @@
 import type {Metadata} from "next";
-import {Geist, Geist_Mono} from "next/font/google";
-import "./globals.css";
+import {Inter, JetBrains_Mono, Source_Sans_3} from "next/font/google";
 import {HeaderSection} from "@/components/HeaderSection";
 import {FooterSection} from "@/components/FooterSection";
+import "./globals.css";
 
-const geistSans = Geist({
-    variable: "--font-geist-sans",
+const inter = Inter({
+    variable: "--font-inter",
     subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-    variable: "--font-geist-mono",
+const sourceSans3 = Source_Sans_3({
+    variable: "--font-source-sans",
+    subsets: ["latin"],
+});
+
+const jetBrainsMono = JetBrains_Mono({
+    variable: "--font-jet-brains-mono",
     subsets: ["latin"],
 });
 
@@ -22,8 +27,8 @@ export const metadata: Metadata = {
 export default function RootLayout( {children}: Readonly<{ children: React.ReactNode; }> ) {
     return (
         <html lang="pt-BR">
-        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <div className="min-h-screen bg-gray-50 dark:bg-slate-800">
+        <body className={`${inter.variable} ${jetBrainsMono.variable} ${sourceSans3.variable} antialiased`}>
+        <div className="min-h-screen bg-background dark:bg-background-dark">
             <HeaderSection/>
             <main>{children}</main>
             <FooterSection/>

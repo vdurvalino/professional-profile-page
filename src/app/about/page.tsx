@@ -4,9 +4,9 @@ import {CTA} from '@/app/about/(components)/CTA';
 
 const AboutPage = () => {
     return (
-        <main className="max-w-6xl mx-auto px-6 py-16">
+        <main className="py-16">
             {/* Bio Section */}
-            <section>
+            <section className={"page max-w-6xl"}>
                 <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
                     {/* Profile Image */}
                     <div className="flex-shrink-0">
@@ -16,26 +16,26 @@ const AboutPage = () => {
                                 alt="Vinícius Durvalino"
                                 fill
                                 className="rounded-full object-cover shadow-xl"
-                                priority
+                                priority={true}
                             />
                         </div>
                     </div>
 
                     {/* Bio Content */}
                     <div className="flex-1 text-center lg:text-left">
-                        <h1 className="text-4xl font-bold text-gray-800 dark:text-white mb-6">
+                        <h1 className="section mb-6">
                             Sobre Mim
                         </h1>
 
-                        <div className="space-y-4">
-                            <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+                        <div className="space-y-4 text-lg leading-relaxed">
+                            <p className={"text-font-primary/80 dark:text-font-primary-dark/70"}>
                                 Olá! Sou Vinícius Durvalino, um desenvolvedor Full Stack apaixonado por criar
                                 soluções digitais que resolvem problemas reais. Com mais de 10 anos de experiência
                                 na indústria de software, tive a oportunidade de trabalhar em uma ampla gama de
                                 projetos, desde sistemas de ERP complexos até aplicações SaaS inovadoras.
                             </p>
 
-                            <p className="text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+                            <p className={"text-font-primary/80 dark:text-font-primary-dark/70"}>
                                 Minha jornada na programação começou com um simples &quot;Hello, World!&quot; e
                                 desde então, tenho me dedicado a aprender e dominar novas tecnologias. Acredito
                                 que a chave para o sucesso no desenvolvimento de software é uma combinação de
@@ -47,12 +47,13 @@ const AboutPage = () => {
             </section>
 
             {/* Stack Section */}
-            <DetailedStack/>
+            <section className={"page"}>
+                <DetailedStack/>
+            </section>
 
             {/* CTA Section */}
-            <section className="mt-16">
-                <CTA/>
-            </section>
+            <CTA/>
+
         </main>
     );
 };

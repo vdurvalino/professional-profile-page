@@ -30,14 +30,14 @@ const Sidebar: React.FC<SidebarProps> = ( {content} ) => {
 
     return (
         <aside
-            className="sticky top-24 p-6 bg-gray-50 dark:bg-gray-700 rounded-lg border border-gray-200 dark:border-gray-600 h-fit">
-            <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">On this page</h3>
+            className="sticky top-24 p-6 bg-surface dark:bg-surface-dark rounded-lg border border-gray-200 dark:border-gray-600 h-fit">
+            <h3 className="text-lg font-semibold mb-4 text-font-primary dark:text-font-primary-dark">On this page</h3>
             <ul className="space-y-2">
                 {headings.map(( heading ) => (
                     <li key={heading.id} style={{marginLeft: `${(heading.level - 2) * 1}rem`}}>
                         <Link
                             href={`#${heading.id}`}
-                           className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors focus:ring-none focus:outline-none focus:border-b"
+                           className="text-font-secondary dark:text-font-secondary-dark hover:text-font-primary hover:dark:text-font-primary-dark transition-colors focus:ring-none focus:outline-none focus:border-b"
                         >
                             {heading.text}
                         </Link>

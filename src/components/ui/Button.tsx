@@ -2,12 +2,12 @@ import React from "react";
 import {tv, VariantProps} from "tailwind-variants";
 
 const buttonVariants = tv({
-    base: "relative inline-flex gap-2 items-center justify-center rounded-md font-medium focus:outline focus:outline-2 focus:outline-gray-900 dark:focus:outline-gray-300 focus:outline-offset-2 hover:cursor-pointer disabled:cursor-not-allowed transition-all",
+    base: "relative inline-flex gap-2 items-center justify-center rounded-md font-medium focus:outline focus:outline-2 focus:outline-primary dark:focus:outline-primary-dark focus:outline-offset-2 hover:cursor-pointer disabled:cursor-not-allowed transition-all",
     variants: {
         variant: {
-            solid: "bg-gray-900 text-white hover:bg-gray-800 active:bg-gray-700 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-200 dark:active:bg-gray-300",
-            outline: "border border-gray-300 text-gray-700 bg-gray-50 hover:bg-gray-100 active:bg-gray-100 dark:border-gray-700 dark:text-gray-300 dark:bg-gray-800 dark:hover:bg-gray-900 dark:active:bg-gray-700",
-            ghost: "text-gray-600 hover:bg-gray-100 active:bg-gray-200 dark:text-gray-400 dark:hover:bg-gray-800 dark:active:bg-gray-700",
+            solid: "bg-primary text-white hover:bg-primary-hover active:bg-gray-700 dark:bg-primary-dark dark:text-font-primary-dark dark:hover:bg-primary-hover-dark dark:active:bg-gray-300",
+            outline: "border border-gray-300 text-gray-700 bg-gray-50 hover:bg-gray-100 active:bg-gray-100 dark:border-gray-700 dark:text-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 dark:active:bg-gray-700",
+            ghost: "text-gray-600 hover:bg-gray-100 active:bg-gray-200 dark:text-gray-400 dark:hover:bg-primary-hover dark:active:bg-gray-700",
         },
         size: {
             xs: "h-7 px-2 text-xs",

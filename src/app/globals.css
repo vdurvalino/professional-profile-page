@@ -4,7 +4,36 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@theme inline {
+    /* Tipografia */
+    --font-main: var(--font-inter);
+    --font-sans: var(--font-source-sans);
+    --font-mono: var(--font-jet-brains-mono);
+}
+
 @theme {
+    /* LIGHT */
+    --color-background: #f9fafb;
+    --color-surface: #f0f4f4;
+    --color-font-primary: #1a202c;
+    --color-font-secondary: #5d6170;
+
+    --color-primary: #38a169;
+    --color-primary-hover: #2f855a;
+
+
+    /* DARK */
+    --color-background-dark: #1a202c;
+    --color-surface-dark: #2d3748;
+    --color-font-primary-dark: #f7fafc;
+    --color-font-secondary-dark: #a0aec0;
+
+    --color-primary-dark: #48bb78;
+    --color-primary-hover-dark: #38a169;
+
+
+
+    /* Animations */
     --animate-blink: blink 1s infinite;
 
     @keyframes blink {
@@ -26,5 +55,56 @@
             opacity: 0;
         }
     }
+}
+
+@layer base {
+    body {
+        /* fundo, cor do texto, fonte e transições */
+        @apply text-font-primary font-sans transition-colors duration-200 ease-in-out;
+    }
+
+    h1, h2, h3 {
+        @apply text-font-primary font-main;
+    }
+
+    p {
+        @apply text-font-secondary;
+    }
+
+
+    /* Page section stuff */
+    section.page {
+        @apply mb-40 max-w-7xl mx-auto px-4 md:px-0;
+    }
+
+    h1.section {
+        @apply text-3xl md:text-4xl font-bold text-font-primary dark:text-font-primary-dark;
+    }
+
+    h2.section {
+        @apply text-3xl font-bold text-font-primary dark:text-font-primary-dark;
+    }
+
+    p.section-description {
+        @apply text-lg text-font-secondary dark:text-font-secondary-dark;
+    }
+
+    /* CTA stuff */
+    div.cta-banner {
+        @apply bg-gradient-to-br from-primary-dark to-primary/70 dark:from-primary-dark/70 dark:to-primary/50 py-16
+    }
+
+    div .cta-banner .cta-headline {
+        @apply text-3xl md:text-4xl font-bold text-white mb-4
+    }
+
+    div .cta-banner .cta-sub-headline {
+        @apply text-xl text-gray-100 mb-8 max-w-2xl mx-auto
+    }
+
+    div .cta-banner .cta-button {
+        @apply inline-flex items-center gap-2 px-18 py-4 rounded-lg font-medium text-lg bg-white dark:bg-white text-gray-900 dark:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-100 focus:outline-white dark:focus:outline-white focus:outline focus:outline-2 focus:outline-offset-2 hover:cursor-pointer disabled:cursor-not-allowed transition-all
+    }
 
 }
+

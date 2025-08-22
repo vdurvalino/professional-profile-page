@@ -13,9 +13,9 @@ export const BlogSection: React.FC = () => {
     const blogPosts = posts.slice(0, 3);
 
     return (
-        <section className="mb-40">
-            <div className="flex  flex-col md:flex-row items-start md:items-center justify-between mb-8">
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+        <section className="page">
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-8">
+                <h2 className="section">
                     {translations?.latestArticles}
                 </h2>
 

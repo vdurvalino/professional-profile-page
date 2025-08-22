@@ -48,7 +48,7 @@ export const HeaderSection: React.FC = () => {
     return (
         <>
             <header
-                className="border-b border-gray-200 dark:border-gray-700 bg-white/60 dark:bg-gray-900/80 backdrop-blur-sm sticky top-0 z-10"
+                className="border-b border-gray-200 dark:border-gray-700 bg-white/60 dark:bg-gray-900/80 backdrop-blur-sm sticky top-0 z-20"
             >
                 <div className="max-w-6xl mx-auto px-6 py-4">
                     <div className="flex justify-between items-center">
@@ -60,7 +60,7 @@ export const HeaderSection: React.FC = () => {
                                 <Link
                                     key={href}
                                     href={href}
-                                    className={`text-sm font-medium transition-colors ${isCurrentResource(href, pathname) ? 'text-green-600 dark:text-green-500' : 'text-gray-600 dark:text-gray-400'} hover:text-gray-900 dark:hover:text-white`}
+                                    className={`text-sm font-medium transition-colors ${isCurrentResource(href, pathname) ? 'text-primary dark:text-green-500' : 'text-gray-600 dark:text-gray-400'} hover:text-gray-900 dark:hover:text-white`}
                                 >
                                     {name}
                                 </Link>
@@ -116,7 +116,7 @@ export const HeaderSection: React.FC = () => {
                                     <Link
                                         key={href}
                                         href={href}
-                                        className={`text-sm font-medium transition-colors ${isCurrentResource(href, pathname) ? 'text-green-600 dark:text-green-500' : 'text-gray-600 dark:text-gray-400'} hover:text-gray-900 dark:hover:text-white`}
+                                        className={`text-sm font-medium transition-colors ${isCurrentResource(href, pathname) ? 'text-primary dark:text-green-500' : 'text-gray-600 dark:text-gray-400'} hover:text-gray-900 dark:hover:text-white`}
                                         onClick={() => setIsMobileMenuOpen(false)}
                                     >
                                         {name}
@@ -171,7 +171,7 @@ export const HeaderSection: React.FC = () => {
             {/*Overlay*/}
             {isMobileMenuOpen && (
                 <div
-                    className={"fixed inset-0 bg-transparent backdrop-blur-sm z-0"}
+                    className={"fixed inset-0 bg-transparent backdrop-blur-sm z-10"}
                     onClick={() => setIsMobileMenuOpen(false)}
                 />
             )}

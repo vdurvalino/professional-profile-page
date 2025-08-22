@@ -2,15 +2,14 @@ import React from 'react';
 import {ArrowRight} from 'lucide-react';
 import Link from "next/link";
 import {projects} from "@/data/projects";
-import Image from "next/image";
 import {Button} from "@/components/ui/Button";
 import {ProjectsCard} from "@/components/ProjectsCard";
 
 export const ProjectsSection: React.FC = () => {
     return (
-        <section className="mb-40">
+        <section className="page">
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+                <h2 className="section">
                     Projetos em Destaque
                 </h2>
 
