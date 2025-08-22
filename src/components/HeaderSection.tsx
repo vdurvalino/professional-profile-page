@@ -7,6 +7,7 @@ import Link from "next/link";
 import {Button} from "@/components/ui/Button";
 import {Logo} from "@/components/ui/Logo";
 import {usePathname} from "next/navigation";
+import {isCurrentResource} from "@/lib/isCurrentResource";
 
 const pages: { href: string, name: string }[] = [
     {href: "/", name: "Home"},
@@ -43,7 +44,6 @@ export const HeaderSection: React.FC = () => {
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
     };
-
     return (
         <>
             <header
@@ -59,7 +59,7 @@ export const HeaderSection: React.FC = () => {
                                 <Link
                                     key={href}
                                     href={href}
-                                    className={`text-sm font-medium transition-colors ${pathname === href ? 'text-green-600 dark:text-green-500' : 'text-gray-600 dark:text-gray-400'} hover:text-gray-900 dark:hover:text-white`}
+                                    className={`text-sm font-medium transition-colors ${isCurrentResource(href, pathname) ? 'text-green-600 dark:text-green-500' : 'text-gray-600 dark:text-gray-400'} hover:text-gray-900 dark:hover:text-white`}
                                 >
                                     {name}
                                 </Link>
@@ -123,7 +123,7 @@ export const HeaderSection: React.FC = () => {
                                     <Link
                                         key={href}
                                         href={href}
-                                        className={`text-sm font-medium transition-colors ${pathname === href ? 'text-green-600 dark:text-green-500' : 'text-gray-600 dark:text-gray-400'} hover:text-gray-900 dark:hover:text-white`}
+                                        className={`text-sm font-medium transition-colors ${isCurrentResource(href, pathname) ? 'text-green-600 dark:text-green-500' : 'text-gray-600 dark:text-gray-400'} hover:text-gray-900 dark:hover:text-white`}
                                         onClick={() => setIsMobileMenuOpen(false)}
                                     >
                                         {name}
