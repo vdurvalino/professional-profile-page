@@ -134,20 +134,68 @@ Ele deve ser aplicado em todas as páginas, independentemente da estrutura ou co
 
 ### Estilo Visual
 
-- **Tema Claro**
-  - Fundo base: `bg-gray-50`
-  - Superfícies: `bg-white`
-  - Texto principal: `text-gray-700`
-  - Texto secundário: `text-gray-500`
+##### Tema Claro
 
-- **Tema Escuro**
-  - Fundo base: `dark:bg-slate-800`
-  - Superfícies: `dark:bg-gray-800`
-  - Texto principal: `dark:text-gray-300`
-  - Texto secundário: `dark:text-gray-400`
+*   **Fundo base (`background`)**: `#f9fafb`
+*   **Superfícies (`surface`)**: `#f0f4f4`
+*   **Brand (`primary`)**: `#38a169`
+*   **Versão do brand para hover (`hover:primary-hover`)**: `#2f855a`
+*   **Texto principal (`font-prima`)**: `#1a202c`
+*   **Texto secundário (`font-secondary`)**: `#5d6170`
 
-- **Destaques**
-  - Usada em botões, títulos e ícones de destaque.
+##### Tema Escuro
+
+*   **Fundo base (`dark:background-dark`)**: `#1a202c`
+*   **Superfícies (`dark:surface-dark`)**: `#2d3748`
+*   **Brand (`dark:primary-dark`)**: `#48bb78`
+*   **Versão do brand para hover (`dark:hover:primary-dark-hover`)**: `#38a169`
+*   **Texto principal (`dark:font-prima-dark`)**: `#f7fafc`
+*   **Texto secundário (`dark:font-secondary-dark`)**: `#a0aec0`
+
+---
+
+#### Tipografia
+
+A aplicação utiliza as seguintes fontes:
+
+*   **Fonte principal (`--font-main`)**: `Inter` (aplicada a `h1`, `h2`, `h3`)
+*   **Fonte sans-serif padrão (`--font-sans`)**: `Source Sans` (aplicada ao `body` e parágrafos)
+*   **Fonte mono (`--font-mono`)**: `JetBrains Mono`
+
+---
+
+#### Classes Utilitárias
+
+Essas classes padronizam o estilo de componentes e seções da página.
+
+*   **Corpo da página**:
+  *   `body`: Aplica `text-font-primary`, `font-sans`, e transições de cor (`transition-colors duration-200 ease-in-out`).
+
+*   **Títulos e Parágrafos**:
+  *   `h1`, `h2`, `h3`: Aplicam `text-font-primary` e `font-main`.
+  *   `p`: Aplica `text-font-secondary`.
+
+*   **Seções da Página**:
+  *   `<section className="page" />`: Padroniza a largura máxima (`max-w-7xl`), margem automática (`mx-auto`), espaçamento interno horizontal (`px-4 md:px-0`) e margem inferior (`mb-40`).
+  *   `h1.section`: Padroniza títulos de seção como `h1` com `text-3xl md:text-4xl`, `font-bold`, e cores do texto adaptadas para temas claro e escuro (`text-font-primary dark:text-font-primary-dark`).
+  *   `h2.section`: Padroniza títulos de seção como `h2` com `text-3xl`, `font-bold`, e cores do texto adaptadas para temas claro e escuro (`text-font-primary dark:text-font-primary-dark`).
+  *   `p.section-description`: Padroniza descrições de seção com `text-lg` e cores de texto secundárias adaptadas para temas claro e escuro (`text-font-secondary dark:text-font-secondary-dark`).
+
+*   **Call to Action (CTA)**:
+  *   `div.cta-banner`: Aplica um gradiente de fundo (`bg-gradient-to-br from-primary-dark to-primary/70 dark:from-primary-dark/70 dark:to-primary/50`) e padding vertical (`py-16`).
+  *   `div .cta-banner .cta-headline`: Título principal do CTA com `text-3xl md:text-4xl`, `font-bold`, `text-white` e `mb-4`.
+  *   `div .cta-banner .cta-sub-headline`: Subtítulo do CTA com `text-xl`, `text-gray-100`, `mb-8`, e largura máxima (`max-w-2xl mx-auto`).
+  *   `div .cta-banner .cta-button`: Botão do CTA com estilo `inline-flex`, `items-center`, `gap-2`, padding (`px-18 py-4`), `rounded-lg`, `font-medium`, `text-lg`, fundo branco (`bg-white dark:bg-white`), texto cinza escuro (`text-gray-900 dark:text-gray-900`), estados de hover e foco (`hover:bg-gray-100 dark:hover:bg-gray-100 focus:outline-white dark:focus:outline-white focus:outline focus:outline-2 focus:outline-offset-2`), `hover:cursor-pointer`, `disabled:cursor-not-allowed` e transição (`transition-all`).
+
+---
+
+#### Animações
+
+Duas animações estão disponíveis para uso:
+
+*   `--animate-blink`: Simula um efeito de piscar, alternando a opacidade entre 1 e 0 a cada 1 segundo, infinitamente.
+*   `--animate-pulse`: Simula um efeito de pulsação, alternando a opacidade entre 1 e 0 a cada 1 segundo com uma curva `cubic-bezier`, infinitamente.
+
 
 ---
 
