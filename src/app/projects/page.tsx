@@ -124,8 +124,13 @@ const ProjectsPage = () => {
                                         index % 2 !== 0 ? 'md:order-last' : ''
                                     }`}
                                 >
-                                    <Image src={project.image} alt={project.title} fill={true}
-                                           className={"object-cover"}/>
+                                    <Image
+                                        src={project.image}
+                                        alt={project.title}
+                                        fill={true}
+                                        className={"object-cover"}
+                                        priority={index === 0}
+                                    />
 
                                     {/* Featured Badge */}
                                     {project.featured && (
