@@ -42,10 +42,6 @@ export const projects = [{
     tech: ["PHP", "Laravel", "MySQL", "jQuery", "Linux", "VPS", "Rest API", "Git"],
     highlights: ["Redução de 3h30 para <30min no processo", "De 2 colaboradores para apenas 1", "Bando de dados com 7+ milhões de registros", "Gestão automatizada de brindes e campanhas"],
     image: "/projects/1-erp.jpg",
-    duration: "2016-2021",
-    team: "1 pessoa",
-    role: "full cycle",
-    liveUrl: null
 }, {
     id: 2,
     title: "Sistema de Abaixo-Assinado Escalável",
@@ -74,8 +70,4 @@ export const projects = [{
     tech: ["Next.js", "React", "TypeScript", "Rest API", "Vercel", "Chakra UI", "Git", "Postman", "Figma"],
     highlights: ["Liderança técnica do projeto", "Arquitetura para tráfego viral", "100% de confiabilidade em leads", "Documentação técnica completa"],
     image: "/projects/2-peticoes.jpg",
-    duration: "2021",
-    team: "2 pessoas",
-    role: "tech lead",
-    liveUrl: null
 }];

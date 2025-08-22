@@ -1,11 +1,12 @@
 "use client"
 
 import React, {useMemo, useState} from 'react';
-import {ArrowRight, Award, Calendar, Code2, ExternalLink, Filter, Search, Sparkles, Star, Users, X} from 'lucide-react';
+import {ArrowRight, Code2, Filter, Search, X} from 'lucide-react';
 import {projects} from '@/data/projects';
 import Link from "next/link";
 import Image from "next/image";
 import {Button} from "@/components/ui/Button";
+import {ProjectsCard} from "@/components/ProjectsCard";
 
 const ProjectsPage = () => {
     const [selectedTech, setSelectedTech] = useState<string[]>([]);
@@ -105,132 +106,13 @@ const ProjectsPage = () => {
                 </div>
             </div>
 
-            {/* Projects Grid */}
-            <div className="container mx-auto px-6 pb-16">
-                <div className="space-y-32">
-                    {filteredProjects.map(( project, index ) => (
-                        <div
-                            key={project.id}
-                            className="relative"
-                        >
-                            <div
-                                className={`grid md:grid-cols-2 gap-8 md:gap-16 items-center ${
-                                    index % 2 !== 0 ? 'md:flex-row-reverse' : ''
-                                }`}
-                            >
-                                {/* Image Container */}
-                                <div
-                                    className={`relative group overflow-hidden rounded-2xl bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-800 dark:to-gray-700 h-96 ${
-                                        index % 2 !== 0 ? 'md:order-last' : ''
-                                    }`}
-                                >
-                                    <Image
-                                        src={project.image}
-                                        alt={project.title}
-                                        fill={true}
-                                        className={"object-cover"}
-                                        priority={index === 0}
-                                    />
-
-                                    {/* Featured Badge */}
-                                    {project.featured && (
-                                        <div
-                                            className="absolute top-6 right-6 bg-gradient-to-r from-yellow-400 to-orange-400 text-white px-4 py-2 rounded-full text-sm font-medium flex items-center gap-1">
-                                            <Star className="w-4 h-4"/>
-                                            Destaque
-                                        </div>
-                                    )}
-                                </div>
-
-                                {/* Content Container */}
-                                <div className="flex flex-col justify-center space-y-6">
-                                    {/* Project Title */}
-                                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
-                                        {project.title}
-                                    </h2>
-
-                                    {/* Description */}
-                                    <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                                        {project.description}
-                                    </p>
-
-                                    {/* Highlights */}
-                                    <div className="space-y-3">
-                                        {project.highlights.slice(0, 3).map(( highlight, i ) => (
-                                            <div key={i} className="flex items-start gap-3">
-                                                <Sparkles
-                                                    className="w-5 h-5 text-yellow-500 mt-0.5 flex-shrink-0"/>
-                                                <span
-                                                    className="text-gray-600 dark:text-gray-400">{highlight}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-
-                                    {/* Tech Stack */}
-                                    <div className="flex flex-wrap gap-2">
-                                        {project.tech.map(( tech, i ) => (
-                                            <span
-                                                key={i}
-                                                className={`px-3 py-1.5 rounded-full text-sm font-mono transition-all ${
-                                                    selectedTech.includes(tech)
-                                                        ? 'bg-gray-900 text-white dark:bg-white dark:text-gray-900 ring-2 ring-gray-900 dark:ring-white'
-                                                        : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300'
-                                                }`}
-                                            >
-                                                {tech}
-                                            </span>
-                                        ))}
-                                    </div>
-
-                                    {/* Project Meta */}
-                                    <div
-                                        className="flex flex-wrap gap-6 text-sm text-gray-600 dark:text-gray-400">
-                                        {project.duration && (
-                                            <div className="flex items-center gap-2">
-                                                <Calendar className="w-4 h-4"/>
-                                                <span>{project.duration}</span>
-                                            </div>
-                                        )}
-                                        {project.team && (
-                                            <div className="flex items-center gap-2">
-                                                <Users className="w-4 h-4"/>
-                                                <span>{project.team}</span>
-                                            </div>
-                                        )}
-                                        {project.role && (
-                                            <div className="flex items-center gap-2">
-                                                <Award className="w-4 h-4"/>
-                                                <span>{project.role}</span>
-                                            </div>
-                                        )}
-                                    </div>
-
-                                    {/* CTA Buttons */}
-                                    <div className="flex flex-wrap gap-4 pt-4">
-                                        <Button as={Link} size={"lg"} href={`/projects/${project.id}`}>
-                                            Ver estudo de caso
-                                            <ArrowRight
-                                                className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-                                            />
-                                        </Button>
-
-                                        {project?.liveUrl && (
-                                            <a
-                                                href={project.liveUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="inline-flex items-center gap-2 px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-300"
-                                            >
-                                                Ver projeto ao vivo
-                                                <ExternalLink className="w-4 h-4"/>
-                                            </a>
-                                        )}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
+                {/* Projects Grid */}
+                <div className="container mx-auto px-6 pb-16">
+                    <div className="space-y-32">
+                        {filteredProjects.map(( project, index ) => (
+                            <ProjectsCard key={project.id} index={index} project={{...project}}/>
+                        ))}
+                    </div>
 
                 {/* Empty State */}
                 {filteredProjects.length === 0 && (

@@ -17,7 +17,8 @@ export const posts = [
         `,
         date: "15 Jan 2024",
         readTime: "8 min de leitura",
-        tags: ["Arquitetura", "DevOps", "Docker"]
+        tags: ["Arquitetura", "DevOps", "Docker"],
+        image: "/projects/1-erp.jpg",
     },
     {
         id: 2,
@@ -26,7 +27,8 @@ export const posts = [
         content: "Técnicas avançadas para otimizar aplicações React em produção, desde code splitting até lazy loading e memoização eficiente.",
         date: "10 Jan 2024",
         readTime: "12 min de leitura",
-        tags: ["React", "Performance", "Frontend"]
+        tags: ["React", "Performance", "Frontend"],
+        image: "/projects/1-erp.jpg",
     },
     {
         id: 3,
@@ -35,6 +37,7 @@ export const posts = [
         content: "Como integrar workflows n8n com modelos de IA para criar automações inteligentes que aprendem e se adaptam.",
         date: "05 Jan 2024",
         readTime: "10 min de leitura",
-        tags: ["n8n", "IA", "Automação"]
+        tags: ["n8n", "IA", "Automação"],
+        image: "/projects/1-erp.jpg",
     }
 ];
