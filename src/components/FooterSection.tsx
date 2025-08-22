@@ -1,8 +1,8 @@
 import React from 'react';
 import {Coffee, Github, Linkedin, Mail} from 'lucide-react';
 import Link from "next/link";
-import {Button} from "@/components/ui/Button";
 import {Logo} from "@/components/ui/Logo";
+import {SocialButton} from "@/components/SocialButton";
 
 export const FooterSection: React.FC = () => {
     return (
@@ -21,25 +21,25 @@ export const FooterSection: React.FC = () => {
                         <ul className="space-y-2">
                             <li>
                                 <Link href="/about"
-                                      className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+                                      className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-dark transition-colors">
                                     Sobre
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/projects"
-                                      className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+                                      className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-dark transition-colors">
                                     Projetos
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/blog"
-                                      className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+                                      className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-dark transition-colors">
                                     Blog
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/contact"
-                                      className="text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors">
+                                      className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-dark transition-colors">
                                     Contato
                                 </Link>
                             </li>
@@ -49,36 +49,27 @@ export const FooterSection: React.FC = () => {
                     <div>
                         <h4 className="font-semibold text-gray-900 dark:text-white mb-4">Conecte-se</h4>
                         <div className="flex gap-3">
-                            <Button
-                                size={"xs"}
-                                variant={"outline"}
-
+                            <SocialButton
                                 as={Link}
                                 href="https://github.com/vdurvalino/"
                                 target="_blank"
                             >
-                                <Github className="w-5 h-5"/>
-                            </Button>
-                            <Button
-                                size={"xs"}
-                                variant={"outline"}
-
+                                <Github className="w-4 h-4"/>
+                            </SocialButton>
+                            <SocialButton
                                 as={Link}
                                 href="https://www.linkedin.com/in/vinicius-d-de-souza-b745a41bb/"
                                 target="_blank"
                             >
-                                <Linkedin className="w-5 h-5"/>
-                            </Button>
-                            <Button
-                                size={"xs"}
-                                variant={"outline"}
-
+                                <Linkedin className="w-4 h-4"/>
+                            </SocialButton>
+                            <SocialButton
                                 as={Link}
-                                target={"_blank"}
                                 href="mailto:contact@durvalino.dev"
+                                target="_blank"
                             >
                                 <Mail className="w-5 h-5"/>
-                            </Button>
+                            </SocialButton>
                         </div>
                     </div>
                 </div>

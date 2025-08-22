@@ -8,6 +8,7 @@ import {Button} from "@/components/ui/Button";
 import {Logo} from "@/components/ui/Logo";
 import {usePathname} from "next/navigation";
 import {isCurrentResource} from "@/utils/is-current-resource";
+import {SocialButton} from "@/components/SocialButton";
 
 const pages: { href: string, name: string }[] = [
     {href: "/", name: "Home"},
@@ -74,44 +75,36 @@ export const HeaderSection: React.FC = () => {
 
                         {/* Desktop Action Buttons */}
                         <div className="hidden md:flex items-center gap-2">
-                            <Button
-                                variant={"outline"}
-                                size={'xs'}
+                            <SocialButton
                                 as={Link}
                                 href="https://github.com/vdurvalino/"
                                 target="_blank"
                             >
-                                <Github className="w-5 h-5"/>
-                            </Button>
-                            <Button
-                                variant={"outline"}
-                                size={'xs'}
+                                <Github className="w-4 h-4"/>
+                            </SocialButton>
+                            <SocialButton
                                 as={Link}
                                 href="https://www.linkedin.com/in/vinicius-d-de-souza-b745a41bb/"
                                 target="_blank"
                             >
-                                <Linkedin className="w-5 h-5"/>
-                            </Button>
-                            <Button
-                                variant={"outline"}
-                                size={'xs'}
+                                <Linkedin className="w-4 h-4"/>
+                            </SocialButton>
+                            <SocialButton
                                 onClick={toggleDarkMode}
                                 aria-label="Toggle dark mode"
                             >
                                 {isDarkMode ? (
-                                    <Sun className="w-5 h-5"/>
+                                    <Sun className="w-4 h-4"/>
                                 ) : (
-                                    <Moon className="w-5 h-5"/>
+                                    <Moon className="w-4 h-4"/>
                                 )}
-                            </Button>
-                            <Button
-                                variant={"outline"}
-                                size={'xs'}
+                            </SocialButton>
+                            <SocialButton
                                 onClick={() => setLanguage(language === 'pt' ? 'en' : 'pt')}
                                 aria-label="Toggle Language"
                             >
                                 {language === 'pt' ? 'EN' : 'PT'}
-                            </Button>
+                            </SocialButton>
                         </div>
                     </div>
 
