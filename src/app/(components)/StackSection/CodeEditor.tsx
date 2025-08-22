@@ -36,7 +36,7 @@ export function CodeEditor() {
                 <p className={"text-gray-500"}>Open a file</p>
             </div>)}
             {/* Line Numbers */}
-            <div className="bg-[#1e1e1e] text-gray-600 text-sm font-mono px-4 py-6 select-none">
+            <div className="bg-neutral-900 text-gray-600 text-sm font-mono px-4 py-6 select-none">
                 {lines.map(( _, index ) => (<div key={index} className="h-6 text-right">
                     {index + 1}
                 </div>))}
@@ -48,7 +48,7 @@ export function CodeEditor() {
                                         <code className="text-gray-300 font-mono">
                         {lines.map(( line, index ) => (<div
                             key={index}
-                            className={`h-6 hover:bg-[#2a2d2e] ${currentLine === index + 1 ? 'bg-[#2a2d2e]' : ''}`}
+                            className={`h-6 hover:bg-neutral-800 ${currentLine === index + 1 ? 'bg-neutral-800' : ''}`}
                             onClick={() => setCurrentLine(index + 1)}
                         >
                             {activeFile && (<span dangerouslySetInnerHTML={{

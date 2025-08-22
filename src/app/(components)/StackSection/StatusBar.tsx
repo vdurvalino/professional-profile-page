@@ -14,7 +14,7 @@ export function StatusBar() {
                 <span className={"hidden md:block"}>✓ 0 problems</span>
             </div>
             <div className="flex items-center gap-4">
-                        <span className="cursor-pointer hover:bg-[#1177bb] px-2 rounded"
+                        <span className="cursor-pointer hover:bg-sky-500 px-2 rounded"
                               onClick={() => setShowTerminal(!showTerminal)}>
                             <TerminalIcon size={12} className="inline mr-1"/>
                             Terminal

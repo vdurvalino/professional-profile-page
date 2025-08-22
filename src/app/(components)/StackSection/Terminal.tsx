@@ -96,7 +96,7 @@ export function Terminal() {
 
     return (
         <div className="border-t border-gray-800">
-            <div className="bg-[#1e1e1e] px-4 py-2 flex items-center justify-between">
+            <div className="bg-neutral-900 px-4 py-2 flex items-center justify-between">
                 <span className="text-gray-400">Terminal</span>
                 <X size={16} className="text-gray-400 hover:text-white cursor-pointer transition-colors"
                    onClick={() => setShowTerminal(false)}/>

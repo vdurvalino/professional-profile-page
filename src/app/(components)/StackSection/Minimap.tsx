@@ -10,7 +10,7 @@ export function Minimap() {
 
     return (
         <div
-            className="hidden md:block w-24 sticky top-10 right-0 bg-[#1e1e1e] p-2 border-l border-gray-800"
+            className="hidden md:block w-24 sticky top-10 right-0 bg-neutral-900 p-2 border-l border-gray-800"
         >
             <div className="text-[2px] right-0 leading-[3px] opacity-50">
                 {lines.map(( line, index ) => (

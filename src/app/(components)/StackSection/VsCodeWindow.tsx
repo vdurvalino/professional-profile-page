@@ -11,11 +11,11 @@ export function VsCodeWindow() {
     const {showTerminal} = useStack();
 
     return (
-        <div className="bg-[#1e1e1e] rounded-lg overflow-hidden shadow-2xl border border-gray-800">
+        <div className="bg-neutral-900 rounded-lg overflow-hidden shadow-2xl border border-gray-800">
             <TitleBar/>
             <div className="flex h-[600px]">
                 <Sidebar/>
-                <div className="flex-1 bg-[#1e1e1e] flex flex-col">
+                <div className="flex-1 bg-neutral-900 flex flex-col">
                     <Tabs/>
                     <Breadcrumb/>
                     <CodeEditor/>
