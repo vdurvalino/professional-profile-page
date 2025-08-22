@@ -3,6 +3,7 @@
 import React from 'react';
 import {BookOpen, Calendar} from 'lucide-react';
 import Link from "next/link";
+import {Badge} from "@/components/ui/Badge";
 
 interface BlogPostCardProps {
     post: {
@@ -44,12 +45,7 @@ export const BlogPostCard: React.FC<BlogPostCardProps> = ( {post}: BlogPostCardP
 
                 <div className="flex flex-wrap gap-2">
                     {tags.map(( tag, index ) => (
-                        <span
-                            key={index}
-                            className="px-2 py-1 bg-primary/20 dark:bg-primary-dark/20 text-gray-600 dark:text-gray-300 rounded-full text-xs"
-                        >
-                            #{tag}
-                        </span>
+                        <Badge size={'sm'} key={index} className="font-mono">#{tag}</Badge>
                     ))}
                 </div>
             </article>

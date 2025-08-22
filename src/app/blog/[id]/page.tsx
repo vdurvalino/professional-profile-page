@@ -5,6 +5,7 @@ import {Calendar, BookOpen, ArrowLeft} from 'lucide-react';
 import Sidebar from './(components)/Sidebar';
 import Link from "next/link";
 import Image from "next/image"
+import {Badge} from "@/components/ui/Badge";
 
 interface BlogPostPageProps {
   id: string;
@@ -78,12 +79,7 @@ export default async function BlogPage({params}: {params: Promise<BlogPostPagePr
               />
               <div className="mt-8 flex flex-wrap gap-2">
                 {post.tags.map(( tag, index ) => (
-                    <span
-                        key={index}
-                        className="px-2 py-1 bg-primary/10 dark:bg-primary-dark/10 text-primary rounded-full text-xs"
-                    >
-                  #{tag}
-                </span>
+                    <Badge key={index}>#{tag}</Badge>
                 ))}
               </div>
             </article>

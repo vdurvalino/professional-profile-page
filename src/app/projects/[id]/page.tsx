@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from "next/image";
 import ReactMarkdown from "react-markdown"
 import {Button} from "@/components/ui/Button";
+import {Badge} from "@/components/ui/Badge";
 
 
 interface ProjectPageProps {
@@ -64,12 +65,7 @@ export default async function ProjectPage({params}: {params: Promise<ProjectPage
             <h3 className="text-lg font-semibold text-font-primary dark:text-font-primary-dark mb-3">Tecnologias Utilizadas</h3>
             <div className="flex flex-wrap gap-2 mb-6">
               {project.tech.map((tech, i) => (
-                <span
-                  key={i}
-                  className="px-3 py-1 bg-primary/15 dark:bg-primary-dark/15 text-primary dark:text-primary-dark rounded-full text-sm font-mono"
-                >
-                  {tech}
-                </span>
+                <Badge key={i} className="font-mono">{tech}</Badge>
               ))}
             </div>
 

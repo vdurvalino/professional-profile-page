@@ -10,6 +10,7 @@ import reactPic from "@/../public/tech/react.png"
 import tailwindPic from "@/../public/tech/tailwind.png"
 import vercelPic from "@/../public/tech/vercel.svg"
 import {Button} from "@/components/ui/Button";
+import {Badge} from "@/components/ui/Badge";
 
 export const HeroSection: React.FC = () => {
 
@@ -25,11 +26,10 @@ export const HeroSection: React.FC = () => {
         <section className="page max-w-[88rem]">
             <div className="flex flex-col md:flex-row gap-12 items-center">
                 <div className="flex-1 flex flex-col gap-8">
-                    <div
-                        className="inline-flex w-fit items-center gap-2 px-4 py-2 bg-primary/25 dark:bg-primary-dark/25 text-green-800 dark:text-green-200 rounded-full text-sm font-medium">
+                    <Badge size={"lg"}>
                         <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
                         Disponível para projetos
-                    </div>
+                    </Badge>
 
                     <h1 className="text-4xl md:text-6xl font-medium text-gray-900 dark:text-white">
                         Olá, eu sou um Desenvolvedor Fullstack

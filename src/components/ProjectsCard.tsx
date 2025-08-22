@@ -3,6 +3,7 @@ import {ArrowRight, Sparkles, Star} from 'lucide-react';
 import Link from "next/link";
 import Image from "next/image";
 import {Button} from "@/components/ui/Button";
+import {Badge} from "@/components/ui/Badge";
 
 interface ProjectsCardProps {
     index: number
@@ -24,23 +25,24 @@ export const ProjectsCard: React.FC<ProjectsCardProps> = ( {project, index}: Pro
     return (
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Image Container */}
-            <div className={`relative group overflow-hidden rounded-2xl h-50 md:h-80 ${index % 2 !== 0 ? 'md:order-last' : ''}`}>
-                    <Image
-                        src={image}
-                        alt={title}
-                        fill={true}
-                        className={"object-cover"}
-                        priority={index === 0}
-                    />
+            <div
+                className={`relative group overflow-hidden rounded-2xl h-50 md:h-80 ${index % 2 !== 0 ? 'md:order-last' : ''}`}>
+                <Image
+                    src={image}
+                    alt={title}
+                    fill={true}
+                    className={"object-cover"}
+                    priority={index === 0}
+                />
 
-                    {/* Featured Badge */}
-                    {featured && (
-                        <div
-                            className="absolute top-6 right-6 bg-gradient-to-r from-yellow-400 to-orange-400 text-white px-4 py-2 rounded-full text-sm font-medium flex items-center gap-1">
-                            <Star className="w-4 h-4"/>
-                            Destaque
-                        </div>
-                    )}
+                {/* Featured Badge */}
+                {featured && (
+                    <div
+                        className="absolute top-6 right-6 bg-gradient-to-r from-yellow-400 to-orange-400 text-white px-4 py-2 rounded-full text-sm font-medium flex items-center gap-1">
+                        <Star className="w-4 h-4"/>
+                        Destaque
+                    </div>
+                )}
             </div>
 
             {/* Info Container */}
@@ -65,17 +67,11 @@ export const ProjectsCard: React.FC<ProjectsCardProps> = ( {project, index}: Pro
 
                 {/* Tech Stack */}
                 <div className="mt-6 flex flex-wrap items-center gap-2">
-                    {tech.slice(0, 3).map((tech, i) => (
-                        <span key={i}
-                              className="px-3 py-1 bg-primary/15 dark:bg-primary-dark/15 text-gray-600 dark:text-gray-400 rounded-full text-sm font-mono">
-                            {tech}
-                        </span>
+                    {tech.slice(0, 3).map(( tech, i ) => (
+                        <Badge key={i} className={"font-mono"}>{tech}</Badge>
                     ))}
                     {tech.length > 3 && (
-                        <span
-                            className="px-3 py-1 bg-primary/15 dark:bg-primary-dark/15 text-gray-600 dark:text-gray-400 rounded-full text-sm font-mono">
-                            +{tech.length - 3}
-                        </span>
+                        <Badge className={"font-mono"}>+{tech.length - 3}</Badge>
                     )}
                 </div>
 
