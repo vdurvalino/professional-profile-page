@@ -8,7 +8,7 @@ import {Button} from "@/components/ui/Button";
 export const ProjectsSection: React.FC = () => {
     return (
         <section className="mb-40">
-            <div className="flex items-center justify-between mb-12">
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
                     Projetos em Destaque
                 </h2>
@@ -17,6 +17,7 @@ export const ProjectsSection: React.FC = () => {
                     variant={"ghost"}
                     as={Link}
                     href="/projects"
+                    className={"self-end"}
                 >
                     Ver todos
                     <ArrowRight className="w-4 h-4"/>
@@ -29,7 +30,7 @@ export const ProjectsSection: React.FC = () => {
                          className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
 
                         {/* Image Container */}
-                        <div className={`relative h-80 ${index % 2 !== 0 ? 'md:order-last' : ''}`}>
+                        <div className={`relative h-50 md:h-80 ${index % 2 !== 0 ? 'md:order-last' : ''}`}>
 
                             <Image
                                 src={project.image}

@@ -74,6 +74,7 @@ export const FooterSection: React.FC = () => {
                                 variant={"outline"}
 
                                 as={Link}
+                                target={"_blank"}
                                 href="mailto:contact@durvalino.dev"
                             >
                                 <Mail className="w-5 h-5"/>

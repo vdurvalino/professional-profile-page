@@ -13,7 +13,7 @@ export const BlogSection: React.FC = () => {
 
     return (
         <section className="mb-40">
-            <div className="flex items-center justify-between mb-8">
+            <div className="flex  flex-col md:flex-row items-start md:items-center justify-between mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
                     {translations?.latestArticles}
                 </h2>
@@ -22,8 +22,9 @@ export const BlogSection: React.FC = () => {
                     variant={"ghost"}
                     as={Link}
                     href="/blog"
-                >{translations?.seeAll}
-
+                    className={"self-end"}
+                >
+                    {translations?.seeAll}
                     <ArrowRight className="w-4 h-4"/>
                 </Button>
             </div>

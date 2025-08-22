@@ -53,6 +53,10 @@ export default async function BlogPage({params}: {params: Promise<BlogPostPagePr
                   {post.readTime}
                 </div>
               </div>
+
+              <div className="block lg:hidden mb-8">
+                <Sidebar content={post.content}/>
+              </div>
               <div
                   className="prose dark:prose-invert max-w-none"
                   dangerouslySetInnerHTML={{__html: contentWithIds}}
@@ -69,7 +73,7 @@ export default async function BlogPage({params}: {params: Promise<BlogPostPagePr
               </div>
             </article>
           </div>
-          <div className="lg:col-span-1">
+          <div className="hidden lg:block lg:col-span-1">
             <Sidebar content={post.content}/>
           </div>
         </div>

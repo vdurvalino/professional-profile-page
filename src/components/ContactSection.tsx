@@ -30,6 +30,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ( {className}: Cont
                             <div className="space-y-3">
                                 <Link
                                     href="mailto:contact@durvalino.dev"
+                                    target={"_blank"}
                                     className="flex items-center gap-3 p-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors group"
                                 >
                                     <Mail
