@@ -28,7 +28,7 @@ const StackContext = createContext<StackContextProps | null>(null);
 
 export function StackProvider( {children}: { children: ReactNode } ) {
     const [activeFile, setActiveFile] = useState<Files | null>("README.md");
-    const [openTabs, setOpenTabs] = useState<Files[]>(["stack.tsx"]);
+    const [openTabs, setOpenTabs] = useState<Files[]>(["README.md"]);
     const [openFolders, setOpenFolders] = useState({
         project: true,
         outline: true,

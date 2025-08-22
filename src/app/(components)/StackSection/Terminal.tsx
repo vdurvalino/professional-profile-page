@@ -101,7 +101,7 @@ export function Terminal() {
                 <X size={16} className="text-gray-400 hover:text-white cursor-pointer transition-colors"
                    onClick={() => setShowTerminal(false)}/>
             </div>
-            <div className="bg-black p-4 h-48 overflow-auto font-mono text-sm">
+            <div className="bg-black/30 p-4 h-48 overflow-auto font-mono text-sm">
                 {terminalOutput}
             </div>
         </div>

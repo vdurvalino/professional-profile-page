@@ -7,7 +7,7 @@ import Link from "next/link";
 import {Button} from "@/components/ui/Button";
 import {Logo} from "@/components/ui/Logo";
 import {usePathname} from "next/navigation";
-import {isCurrentResource} from "@/lib/isCurrentResource";
+import {isCurrentResource} from "@/utils/is-current-resource";
 
 const pages: { href: string, name: string }[] = [
     {href: "/", name: "Home"},

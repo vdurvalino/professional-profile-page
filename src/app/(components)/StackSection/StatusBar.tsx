@@ -5,7 +5,7 @@ export function StatusBar() {
     const {activeFile, currentLine, showTerminal, setShowTerminal} = useStack();
 
     return (
-        <div className="bg-[#007acc] h-6 flex items-center justify-between px-4 text-xs text-white">
+        <div className="bg-[#007acc] dark:bg-[#17496b] h-6 flex items-center justify-between px-4 text-xs text-white">
             <div className="flex items-center gap-4">
                         <span className="flex items-center gap-1">
                             <GitBranch size={12}/>
