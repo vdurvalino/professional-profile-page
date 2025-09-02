@@ -1,18 +1,28 @@
 import React from 'react';
-import {Check, Github, Linkedin} from 'lucide-react';
+import {Check,} from 'lucide-react';
 import Link from "next/link";
 import Image from "next/image";
-import heroPic from "@/../public/home-page-hero.png"
-import nextPic from "@/../public/tech/next.png"
-import githubPic from "@/../public/tech/github.png"
-import dockerPic from "@/../public/tech/docker.png"
-import reactPic from "@/../public/tech/react.png"
-import tailwindPic from "@/../public/tech/tailwind.png"
-import vercelPic from "@/../public/tech/vercel.svg"
+import heroPic from "../../../../public/home-page-hero.png"
+import nextPic from "../../../../public/tech/next.png"
+import githubPic from "../../../../public/tech/github.png"
+import dockerPic from "../../../../public/tech/docker.png"
+import reactPic from "../../../../public/tech/react.png"
+import tailwindPic from "../../../../public/tech/tailwind.png"
+import vercelPic from "../../../../public/tech/vercel.svg"
 import {Button} from "@/components/ui/Button";
 import {Badge} from "@/components/ui/Badge";
+import {getTranslations} from "next-intl/server";
+import {GitHub} from "@/components/ui/icons/GitHub";
+import {Linkedin} from "@/components/ui/icons/Linkedin";
+import {GITHUB, LINKEDIN} from "@/constants/social";
+import {client} from "@/lib/contentful";
+import ContentfulImage from "@/lib/contentful-image";
 
-export const HeroSection: React.FC = () => {
+export const HeroSection: React.FC = async () => {
+    const [t, image] = await Promise.all([
+        await getTranslations(),
+        await client.getAsset("1roZ2lqT0OmsT9n1zfrCmN")
+    ])
 
     const techs = [
         {src: nextPic, title: "Next.js"},
@@ -28,24 +38,22 @@ export const HeroSection: React.FC = () => {
                 <div className="flex-1 flex flex-col gap-8">
                     <Badge size={"lg"}>
                         <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                        Disponível para projetos
+                        {t('homePage_hero_badge')}
                     </Badge>
 
                     <h1 className="text-4xl md:text-6xl font-medium text-gray-900 dark:text-white">
-                        Olá, eu sou um Desenvolvedor Fullstack
+                        {t('homePage_hero_headline')}
                     </h1>
 
                     <p className="text-lg max-w-2xl text-light dark:text-gray-400 mb-2 leading-relaxed">
-                        Desenvolvedor Full Stack com 10+ anos de experiência, especialista em criar soluções
-                        digitais escaláveis que reduzem custos, aumentam eficiência e entregam resultados
-                        mensuráveis para empresas.
+                        {t('homePage_hero_subHeadline')}
                     </p>
 
                     <div className="flex flex-wrap gap-4 justify-start">
                         <Button
                             size={"lg"}
                             as={Link}
-                            href="https://www.linkedin.com/in/vinicius-d-de-souza-b745a41bb/"
+                            href={LINKEDIN}
                             target="_blank"
                             className={"px-8"}
                         >
@@ -56,34 +64,35 @@ export const HeroSection: React.FC = () => {
                             size={"lg"}
                             variant={"outline"}
                             as={Link}
-                            href="https://github.com/vdurvalino/"
+                            href={GITHUB}
                             target="_blank"
                             className={"px-8"}
                         >
-                            <Github className="w-5 h-5"/>
+                            <GitHub className="w-5 h-5"/>
                             GitHub
                         </Button>
                     </div>
                     <div className={"flex flex-col gap-1 pl-4 mt-4"}>
                         {[
-                            "Forte background em design",
-                            "Experiente em integrações com backend",
-                            "Fluente em tecnologias modernas"
+                            t('homePage_hero_result_1'),
+                            t('homePage_hero_result_2'),
+                            t('homePage_hero_result_3')
                         ].map(( item ) => (
                             <div key={item} className={"flex gap-2 items-center"}>
                                 <span className={"p-1 bg-primary/10 dark:bg-primary-dark/10 rounded-full"}>
                                     <Check className={"w-4 h-4 text-primary dark:text-primary-dark"}/>
                                 </span>
-                                <span className={"text-font-primary/90 dark:text-font-primary-dark/90 text-sm"}>{item}</span>
+                                <span
+                                    className={"text-font-primary/90 dark:text-font-primary-dark/90 text-sm"}>{item}</span>
                             </div>
                         ))}
                     </div>
                 </div>
 
                 <div className={"relative w-fit md:pl-28"}>
-                    <Image
-                        src={heroPic.src}
-                        alt={"A foto do desenvolvedor dentro de um Monitor de computador e dentro de um Smartphone"}
+                    <ContentfulImage
+                        src={image.fields?.file?.url || ''}
+                        alt={image?.fields?.description}
                         width={450}
                         height={350}
                         priority={true}

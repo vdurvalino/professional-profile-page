@@ -1,6 +1,6 @@
 import {ChevronDown, ChevronRight, FileText, Folder, FolderOpen} from "lucide-react";
 import {useStack} from "@/context/useStack";
-import {Outline} from "@/app/(components)/StackSection/Outline";
+import {Outline} from "@/app/[locale]/(components)/StackSection/Outline";
 
 export function Sidebar() {
     const {openFolders, toggleFolder, activeFile, openFile} = useStack();

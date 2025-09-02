@@ -32,7 +32,9 @@
  * isCurrentResource('/') // Returns true
  * isCurrentResource('/blog') // Returns false
  */
-export const isCurrentResource = ( href: string, pathname: string ): boolean => {
+export const isCurrentResource = ( href?: string, pathname?: string ): boolean => {
+    if(!pathname || !href) return false
+
     // Checks for an exact match first. Essential for the home page ('/')
     // and for pages that don't have subroutes.
     if (href === pathname) {

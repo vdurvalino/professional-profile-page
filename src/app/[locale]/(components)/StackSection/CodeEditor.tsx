@@ -1,6 +1,6 @@
 import {useStack} from "@/context/useStack";
 import {fileContent, highlightSyntax} from "@/utils/highlight";
-import {Minimap} from "@/app/(components)/StackSection/Minimap";
+import {Minimap} from "@/app/[locale]/(components)/StackSection/Minimap";
 
 export function CodeEditor() {
     const {activeFile, currentLine, setCurrentLine} = useStack();
