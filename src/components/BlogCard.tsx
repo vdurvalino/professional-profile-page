@@ -4,48 +4,39 @@ import React from 'react';
 import {BookOpen, Calendar} from 'lucide-react';
 import Link from "next/link";
 import {Badge} from "@/components/ui/Badge";
+import type {Entry} from "contentful";
+import {TypePostsSkeletonWithReadingTime} from "@/data/posts";
 
-interface BlogPostCardProps {
-    post: {
-        id: number,
-        title: string
-        excerpt: string
-        date: string
-        readTime: string
-        tags: string[]
-    }
-}
-
-export const BlogPostCard: React.FC<BlogPostCardProps> = ( {post}: BlogPostCardProps ) => {
-    const {id, title, tags, excerpt, readTime, date} = post
+export const BlogPostCard: React.FC<Entry<TypePostsSkeletonWithReadingTime>> = ( {fields: post, sys}: Entry<TypePostsSkeletonWithReadingTime> ) => {
+    const {resume, slug, title, tags, readingTime} = post
 
     return (
-        <Link href={`/blog/${id}`} key={id}>
+        <Link href={`/src/app/%5Blocale%5D/blog/${slug}`}>
             <article
                 className="bg-surface dark:bg-surface-dark rounded-lg p-6 border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all hover:shadow-lg cursor-pointer"
             >
                 <div className="flex items-center gap-3 text-sm text-font-secondary dark:text-font-secondary-dark mb-3">
                     <div className="flex items-center gap-1">
                         <Calendar className="w-4 h-4"/>
-                        {date}
+                        {new Date(sys.createdAt).toLocaleString()}
                     </div>
                     <span>•</span>
                     <div className="flex items-center gap-1">
                         <BookOpen className="w-4 h-4"/>
-                        {readTime}
+                        {readingTime} Min
                     </div>
                 </div>
                 <h3 className="text-lg font-semibold text-font-primary dark:text-font-primary-dark mb-2 hover:text-gray-700 dark:hover:text-gray-300 transition-colors">
-                    {title}
+                    <>{title}</>
                 </h3>
 
                 <p className="text-font-secondary dark:text-font-secondary-dark text-sm mb-4 line-clamp-3">
-                    {excerpt}
+                    <>{resume}</>
                 </p>
 
                 <div className="flex flex-wrap gap-2">
-                    {tags.map(( tag, index ) => (
-                        <Badge size={'sm'} key={index} className="font-mono">#{tag}</Badge>
+                    {tags!== undefined && tags?.length > 0 && tags?.map(( {fields} ) => (
+                        <Badge size={'sm'} key={fields.slug} className="font-mono">#{fields.name}</Badge>
                     ))}
                 </div>
             </article>

@@ -3,12 +3,19 @@ import {Coffee, Mail} from 'lucide-react';
 import Link from "next/link";
 import {Logo} from "@/components/ui/Logo";
 import {SocialButton} from "@/components/SocialButton";
+import {getLocale, getTranslations} from "next-intl/server";
+import type {EntryCollection} from "contentful";
+import type {TypeGeneralMenuSkeleton} from "@/types/contentful";
 import {GitHub} from "@/components/ui/icons/GitHub";
 import {Linkedin} from "@/components/ui/icons/Linkedin";
 import {Discord} from "@/components/ui/icons/Discord";
 import {DISCORD, EMAIL, GITHUB, LINKEDIN} from "@/constants/social";
 
-export const FooterSection: React.FC = () => {
+export const FooterSection: React.FC<EntryCollection<TypeGeneralMenuSkeleton>> = async ( {items}: EntryCollection<TypeGeneralMenuSkeleton> ) => {
+    const t = await getTranslations();
+    const menus = items.map(( menu ) => ({...menu.fields}))
+    const locale = await getLocale()
+
     return (
         <footer className="border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
             <div className="max-w-6xl mx-auto px-6 py-12">
@@ -16,42 +23,36 @@ export const FooterSection: React.FC = () => {
                     <div>
                         <Logo/>
                         <p className="text-sm text-gray-600 dark:text-gray-400 mt-4">
-                            Desenvolvedor Fullstack dedicado a criar soluções elegantes para problemas complexos.
+                            {t("general_footer_description")}
                         </p>
                     </div>
 
                     <div>
-                        <h4 className="font-semibold text-gray-900 dark:text-white mb-4">Links Rápidos</h4>
+                        <h4 className="font-semibold text-gray-900 dark:text-white mb-4">
+                            {t("general_footer_quickLinks")}
+                        </h4>
                         <ul className="space-y-2">
-                            <li>
-                                <Link href="/about"
-                                      className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-dark transition-colors">
-                                    Sobre
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/projects"
-                                      className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-dark transition-colors">
-                                    Projetos
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/blog"
-                                      className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-dark transition-colors">
-                                    Blog
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/contact"
-                                      className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-dark transition-colors">
-                                    Contato
-                                </Link>
-                            </li>
+                            {menus.map(( {slug, item}, idx ) => (
+                                <li key={idx}>
+                                    {
+                                        slug ?
+                                            <Link
+                                                href={`/${locale}/${slug}`}
+                                                className="text-sm text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-primary-dark transition-colors"
+                                            >
+                                                <>{item || ''}</>
+                                            </Link> :
+                                            <span><>{item || ''}</></span>
+                                    }
+                                </li>
+                            ))}
                         </ul>
                     </div>
 
                     <div>
-                        <h4 className="font-semibold text-gray-900 dark:text-white mb-4">Conecte-se</h4>
+                        <h4 className="font-semibold text-gray-900 dark:text-white mb-4">
+                            {t("general_footer_connect")}
+                        </h4>
                         <div className="flex gap-3">
                             <SocialButton
                                 as={Link}
@@ -90,7 +91,7 @@ export const FooterSection: React.FC = () => {
                 >
                     <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
                         <Coffee className="w-5 h-5"/>
-                        <span>Feito com café, código e IA.</span>
+                        <span>{t("general_footer_copyright")}</span>
                     </div>
                 </div>
             </div>

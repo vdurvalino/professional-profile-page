@@ -1,7 +1,7 @@
 'use client'
 
 import React, {useEffect, useState} from 'react';
-import {Github, Linkedin, Menu, Moon, Sun, X} from 'lucide-react';
+import {Menu, Moon, Sun, X} from 'lucide-react';
 import {useAppStore} from "@/stores/app-store";
 import Link from "next/link";
 import {Button} from "@/components/ui/Button";
@@ -9,17 +9,20 @@ import {Logo} from "@/components/ui/Logo";
 import {usePathname} from "next/navigation";
 import {isCurrentResource} from "@/utils/is-current-resource";
 import {SocialButton} from "@/components/SocialButton";
+import LocaleSwitcher from "@/components/HeaderSection/LocaleSwitcher";
+import type {EntryCollection} from "contentful";
+import type {TypeGeneralMenuSkeleton} from "@/types/contentful";
+import {useLocale} from "next-intl";
+import {GitHub} from "@/components/ui/icons/GitHub";
+import {Linkedin} from "@/components/ui/icons/Linkedin";
+import {GITHUB, LINKEDIN} from "@/constants/social";
 
-const pages: { href: string, name: string }[] = [
-    {href: "/", name: "Home"},
-    {href: "/about", name: "Sobre"},
-    {href: "/projects", name: "Projetos"},
-    {href: "/blog", name: "Blog"},
-    {href: "/contact", name: "Contato"},
-]
 
-export const HeaderSection: React.FC = () => {
-    const {isDarkMode, language, toggleDarkMode, setLanguage, initializeTheme} = useAppStore();
+export const HeaderSection: React.FC<EntryCollection<TypeGeneralMenuSkeleton>> = ( {items}: EntryCollection<TypeGeneralMenuSkeleton> ) => {
+    const {isDarkMode, toggleDarkMode, initializeTheme} = useAppStore();
+    const menus = items.map(( menu ) => ({...menu.fields}))
+
+    const locale = useLocale()
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const pathname = usePathname();
 
@@ -56,14 +59,19 @@ export const HeaderSection: React.FC = () => {
 
                         {/* Desktop Navigation */}
                         <nav className="hidden md:flex items-center gap-6">
-                            {pages.map(({href, name}) => (
-                                <Link
-                                    key={href}
-                                    href={href}
-                                    className={`text-sm font-medium transition-colors ${isCurrentResource(href, pathname) ? 'text-primary dark:text-green-500' : 'text-gray-600 dark:text-gray-400'} hover:text-gray-900 dark:hover:text-white`}
-                                >
-                                    {name}
-                                </Link>
+                            {menus.map(( {slug, item}, idx ) => (
+                                <React.Fragment key={idx}>
+                                    {
+                                        slug ?
+                                            <Link
+                                                href={`/${locale}/${slug}`}
+                                                className={`text-sm font-medium transition-colors ${isCurrentResource(String(slug), pathname) ? 'text-primary dark:text-green-500' : 'text-gray-600 dark:text-gray-400'} hover:text-gray-900 dark:hover:text-white`}
+                                            >
+                                                <>{item || ''}</>
+                                            </Link> :
+                                            <span><>{item || ''}</></span>
+                                    }
+                                </React.Fragment>
                             ))}
                         </nav>
 
@@ -77,14 +85,14 @@ export const HeaderSection: React.FC = () => {
                         <div className="hidden md:flex items-center gap-2">
                             <SocialButton
                                 as={Link}
-                                href="https://github.com/vdurvalino/"
+                                href={GITHUB}
                                 target="_blank"
                             >
-                                <Github className="w-4 h-4"/>
+                                <GitHub className="w-4 h-4 fill-primary"/>
                             </SocialButton>
                             <SocialButton
                                 as={Link}
-                                href="https://www.linkedin.com/in/vinicius-d-de-souza-b745a41bb/"
+                                href={LINKEDIN}
                                 target="_blank"
                             >
                                 <Linkedin className="w-4 h-4"/>
@@ -99,12 +107,7 @@ export const HeaderSection: React.FC = () => {
                                     <Moon className="w-4 h-4"/>
                                 )}
                             </SocialButton>
-                            <SocialButton
-                                onClick={() => setLanguage(language === 'pt' ? 'en' : 'pt')}
-                                aria-label="Toggle Language"
-                            >
-                                {language === 'pt' ? 'EN' : 'PT'}
-                            </SocialButton>
+                            <LocaleSwitcher/>
                         </div>
                     </div>
 
@@ -112,15 +115,20 @@ export const HeaderSection: React.FC = () => {
                     {isMobileMenuOpen && (
                         <div className="md:hidden mt-4">
                             <nav className="flex flex-col items-start gap-4">
-                                {pages.map(({href, name}) => (
-                                    <Link
-                                        key={href}
-                                        href={href}
-                                        className={`text-sm font-medium transition-colors ${isCurrentResource(href, pathname) ? 'text-primary dark:text-green-500' : 'text-gray-600 dark:text-gray-400'} hover:text-gray-900 dark:hover:text-white`}
-                                        onClick={() => setIsMobileMenuOpen(false)}
-                                    >
-                                        {name}
-                                    </Link>
+                                {menus.map(( {slug, item}, idx ) => (
+                                    <React.Fragment key={idx}>
+                                        {
+                                            slug ?
+                                                <Link
+                                                    href={slug}
+                                                    className={`text-sm font-medium transition-colors ${isCurrentResource(String(slug), pathname) ? 'text-primary dark:text-green-500' : 'text-gray-600 dark:text-gray-400'} hover:text-gray-900 dark:hover:text-white`}
+                                                    onClick={() => setIsMobileMenuOpen(false)}
+                                                >
+                                                    <>{item || ''}</>
+                                                </Link> :
+                                                <span><>{item || ''}</></span>
+                                        }
+                                    </React.Fragment>
                                 ))}
                             </nav>
                             <div className="flex items-center gap-2 mt-4">
@@ -154,14 +162,7 @@ export const HeaderSection: React.FC = () => {
                                         <Moon className="w-5 h-5"/>
                                     )}
                                 </Button>
-                                <Button
-                                    variant={"outline"}
-                                    size={'xs'}
-                                    onClick={() => setLanguage(language === 'pt' ? 'en' : 'pt')}
-                                    aria-label="Toggle Language"
-                                >
-                                    {language === 'pt' ? 'EN' : 'PT'}
-                                </Button>
+                                <LocaleSwitcher/>
                             </div>
                         </div>
                     )}

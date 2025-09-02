@@ -3,6 +3,7 @@ import { Mail} from 'lucide-react';
 import Link from "next/link";
 import {twMerge} from "tailwind-merge";
 import {Button} from "@/components/ui/Button";
+import {getTranslations} from "next-intl/server";
 import {GitHub} from "@/components/ui/icons/GitHub";
 import {Linkedin} from "@/components/ui/icons/Linkedin";
 import {DISCORD, EMAIL, GITHUB, LINKEDIN} from "@/constants/social";
@@ -10,18 +11,19 @@ import {Discord} from "@/components/ui/icons/Discord";
 
 type ContactSectionProps = { className?: string }
 
-export const ContactSection: React.FC<ContactSectionProps> = ( {className}: ContactSectionProps ) => {
+export const ContactSection: React.FC<ContactSectionProps> = async ( {className}: ContactSectionProps ) => {
+    const t = await getTranslations();
+
     return (
         <section className={twMerge("mb-40", className)}>
             <div
                 className="bg-surface dark:bg-surface-dark rounded-lg p-8 border border-gray-200 dark:border-gray-700">
                 <h2 className="section mb-6 text-center">
-                    Vamos Trabalhar Juntos?
+                    {t("homePage_contact_headline")}
                 </h2>
 
                 <p className="section-description text-center mb-8 max-w-2xl mx-auto">
-                    Estou sempre aberto a discutir novos projetos, ideias criativas ou oportunidades para fazer
-                    parte de suas visões.
+                    {t("homePage_contact_subheadline")}
                 </p>
 
                 <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -29,7 +31,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ( {className}: Cont
                     <div className="space-y-6">
                         <div>
                             <h3 className="font-semibold text-gray-900 dark:text-white mb-4">
-                                Entre em Contato
+                                {t("homePage_contact_contactMe")}
                             </h3>
                             <div className="space-y-3">
                                 <Link
@@ -96,26 +98,26 @@ export const ContactSection: React.FC<ContactSectionProps> = ( {className}: Cont
                     {/* Quick Contact Form */}
                     <div>
                         <h3 className="font-semibold text-gray-900 dark:text-white mb-4">
-                            Mensagem Rápida
+                            {t("homePage_contact_quickMessage")}
                         </h3>
                         <form className="space-y-4">
                             <div>
                                 <input
                                     type="text"
-                                    placeholder="Seu nome"
+                                    placeholder={t("homePage_contact_fieldName")}
                                     className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary-dark focus:border-transparent"
                                 />
                             </div>
                             <div>
                                 <input
                                     type="email"
-                                    placeholder="Seu email"
+                                    placeholder={t("homePage_contact_fieldEmail")}
                                     className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary-dark focus:border-transparent"
                                 />
                             </div>
                             <div>
                     <textarea
-                        placeholder="Sua mensagem"
+                        placeholder={t("homePage_contact_fieldMessage")}
                         rows={4}
                         className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary dark:focus:ring-primary-dark focus:border-transparent resize-none"
                     />
@@ -124,7 +126,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ( {className}: Cont
                                 type="submit"
                                 className="w-full"
                             >
-                                Enviar Mensagem
+                                {t("homePage_contact_button")}
                             </Button>
                         </form>
                     </div>
