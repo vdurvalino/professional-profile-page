@@ -1,8 +1,12 @@
 import React from 'react';
-import {Github, Linkedin, Mail} from 'lucide-react';
+import { Mail} from 'lucide-react';
 import Link from "next/link";
 import {twMerge} from "tailwind-merge";
 import {Button} from "@/components/ui/Button";
+import {GitHub} from "@/components/ui/icons/GitHub";
+import {Linkedin} from "@/components/ui/icons/Linkedin";
+import {DISCORD, EMAIL, GITHUB, LINKEDIN} from "@/constants/social";
+import {Discord} from "@/components/ui/icons/Discord";
 
 type ContactSectionProps = { className?: string }
 
@@ -29,7 +33,21 @@ export const ContactSection: React.FC<ContactSectionProps> = ( {className}: Cont
                             </h3>
                             <div className="space-y-3">
                                 <Link
-                                    href="mailto:contact@durvalino.dev"
+                                    href={DISCORD}
+                                    target={"_blank"}
+                                    className="flex items-center gap-3 p-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors group"
+                                >
+                                    <Discord
+                                        className="w-5 h-5 fill-gray-500 group-hover:fill-gray-700 dark:group-hover:fill-gray-400"/>
+                                    <div>
+                                        <div className="text-sm text-gray-500 dark:text-gray-400">Discord</div>
+                                        <div
+                                            className="text-gray-700 dark:text-gray-300">.viniciusdesouza
+                                        </div>
+                                    </div>
+                                </Link>
+                                <Link
+                                    href={EMAIL}
                                     target={"_blank"}
                                     className="flex items-center gap-3 p-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors group"
                                 >
@@ -44,21 +62,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ( {className}: Cont
                                 </Link>
 
                                 <Link
-                                    href="https://github.com/vdurvalino/"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center gap-3 p-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors group"
-                                >
-                                    <Github
-                                        className="w-5 h-5 text-gray-500 group-hover:text-gray-700 dark:group-hover:text-gray-400"/>
-                                    <div>
-                                        <div className="text-sm text-gray-500 dark:text-gray-400">GitHub</div>
-                                        <div className="text-gray-700 dark:text-gray-300">@vdurvalino</div>
-                                    </div>
-                                </Link>
-
-                                <Link
-                                    href="https://www.linkedin.com/in/vinicius-d-de-souza-b745a41bb/"
+                                    href={LINKEDIN}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex items-center gap-3 p-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors group"
@@ -69,6 +73,20 @@ export const ContactSection: React.FC<ContactSectionProps> = ( {className}: Cont
                                         <div className="text-sm text-gray-500 dark:text-gray-400">LinkedIn</div>
                                         <div className="text-gray-700 dark:text-gray-300">Vinícius Durvalino
                                         </div>
+                                    </div>
+                                </Link>
+
+                                <Link
+                                    href={GITHUB}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-3 p-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors group"
+                                >
+                                    <GitHub
+                                        className="w-5 h-5 fill-gray-500 group-hover:fill-gray-700 dark:group-hover:fill-gray-400"/>
+                                    <div>
+                                        <div className="text-sm text-gray-500 dark:text-gray-400">GitHub</div>
+                                        <div className="text-gray-700 dark:text-gray-300">@vdurvalino</div>
                                     </div>
                                 </Link>
                             </div>

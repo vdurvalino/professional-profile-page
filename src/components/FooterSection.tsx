@@ -1,8 +1,12 @@
 import React from 'react';
-import {Coffee, Github, Linkedin, Mail} from 'lucide-react';
+import {Coffee, Mail} from 'lucide-react';
 import Link from "next/link";
 import {Logo} from "@/components/ui/Logo";
 import {SocialButton} from "@/components/SocialButton";
+import {GitHub} from "@/components/ui/icons/GitHub";
+import {Linkedin} from "@/components/ui/icons/Linkedin";
+import {Discord} from "@/components/ui/icons/Discord";
+import {DISCORD, EMAIL, GITHUB, LINKEDIN} from "@/constants/social";
 
 export const FooterSection: React.FC = () => {
     return (
@@ -51,21 +55,28 @@ export const FooterSection: React.FC = () => {
                         <div className="flex gap-3">
                             <SocialButton
                                 as={Link}
-                                href="https://github.com/vdurvalino/"
+                                href={GITHUB}
                                 target="_blank"
                             >
-                                <Github className="w-4 h-4"/>
+                                <GitHub className={"fill-primary"}/>
                             </SocialButton>
                             <SocialButton
                                 as={Link}
-                                href="https://www.linkedin.com/in/vinicius-d-de-souza-b745a41bb/"
+                                href={DISCORD}
                                 target="_blank"
                             >
-                                <Linkedin className="w-4 h-4"/>
+                                <Discord className="w-5 h-5 fill-primary"/>
                             </SocialButton>
                             <SocialButton
                                 as={Link}
-                                href="mailto:contact@durvalino.dev"
+                                href={LINKEDIN}
+                                target="_blank"
+                            >
+                                <Linkedin className="w-5 h-5"/>
+                            </SocialButton>
+                            <SocialButton
+                                as={Link}
+                                href={EMAIL}
                                 target="_blank"
                             >
                                 <Mail className="w-5 h-5"/>
