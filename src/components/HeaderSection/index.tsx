@@ -113,7 +113,13 @@ export const HeaderSection: React.FC<EntryCollection<TypeGeneralMenuSkeleton>> =
 
                     {/* Mobile Menu */}
                     {isMobileMenuOpen && (
-                        <div className="md:hidden mt-4">
+                        <div
+                            className="fixed bg-white/10 backdrop-blur-lg w-screen h-screen md:hidden mt-6"
+                            onClick={(e) => {
+                                e.stopPropagation()
+                                setIsMobileMenuOpen(false)
+                            }}
+                        >
                             <nav className="flex flex-col items-start gap-4">
                                 {menus.map(( {slug, item}, idx ) => (
                                     <React.Fragment key={idx}>
@@ -135,34 +141,39 @@ export const HeaderSection: React.FC<EntryCollection<TypeGeneralMenuSkeleton>> =
                                 <Button
                                     variant={"outline"}
                                     size={'xs'}
+                                    className={"rounded-full py-1.5 h-fit"}
                                     as={Link}
-                                    href="https://github.com/vdurvalino/"
+                                    href={GITHUB}
                                     target="_blank"
                                 >
-                                    <Github className="w-5 h-5"/>
+                                    <GitHub className="fill-primary w-5 h-5"/>
                                 </Button>
                                 <Button
                                     variant={"outline"}
                                     size={'xs'}
+                                    className={"rounded-full py-1.5 h-fit"}
                                     as={Link}
-                                    href="https://www.linkedin.com/in/vinicius-d-de-souza-b745a41bb/"
+                                    href={LINKEDIN}
                                     target="_blank"
                                 >
-                                    <Linkedin className="w-5 h-5"/>
+                                    <Linkedin className="text-primary w-5 h-5"/>
                                 </Button>
                                 <Button
                                     variant={"outline"}
                                     size={'xs'}
+                                    className={"rounded-full py-1.5 h-fit"}
                                     onClick={toggleDarkMode}
                                     aria-label="Toggle dark mode"
                                 >
                                     {isDarkMode ? (
-                                        <Sun className="w-5 h-5"/>
+                                        <Sun className="text-primary w-5 h-5"/>
                                     ) : (
-                                        <Moon className="w-5 h-5"/>
+                                        <Moon className="text-primary w-5 h-5"/>
                                     )}
                                 </Button>
-                                <LocaleSwitcher/>
+                                <div className={"border rounded-full h-fit border-gray-300 text-gray-700 bg-gray-50 hover:bg-gray-100 active:bg-gray-100 dark:border-gray-700 dark:text-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700 dark:active:bg-gray-700"}>
+                                    <LocaleSwitcher/>
+                                </div>
                             </div>
                         </div>
                     )}
