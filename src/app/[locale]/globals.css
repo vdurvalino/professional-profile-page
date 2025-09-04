@@ -207,7 +207,7 @@
 
     /* Inline code */
     .content :not(pre) > code {
-        @apply px-1 py-0.5 rounded-md font-mono text-sm text-primary bg-gray-200;
+        @apply px-1 py-0.5 rounded-md font-mono text-sm text-primary bg-gray-200 dark:bg-gray-700;
     }
 
     /* Blockquotes */
