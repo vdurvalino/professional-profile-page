@@ -5,6 +5,8 @@ import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
 import {oneDark} from 'react-syntax-highlighter/dist/esm/styles/prism';
 import {ComponentPropsWithoutRef} from "react";
 import {slugify} from "@/lib/slugify"
+import Link from "next/link";
+import {DOMAIN} from "@/constants/site";
 
 
 interface MarkdownContentProps {
@@ -65,6 +67,14 @@ export const MarkdownContent = ( {content}: MarkdownContentProps ) => {
             const text = String(children);
             return <h6 id={slugify(text)} {...props}>{children}</h6>;
         },
+        a({children, href}) {
+            return <Link
+                href={href || "#"}
+                target={href?.startsWith(DOMAIN)? "_self": "_blank"}
+            >
+                {children}
+            </Link>
+        }
     };
 
     return (
