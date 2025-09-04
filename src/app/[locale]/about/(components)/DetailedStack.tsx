@@ -14,69 +14,85 @@ export const DetailedStack = () => {
     setExpanded(prev => ({ ...prev, [key]: !prev[key] }));
   };
 
+  function getExperience(initial: number) {
+    const singular = t("aboutPage_stackSection_years_singular")
+    const plural = t("aboutPage_stackSection_years_plural")
+    const diference = new Date().getFullYear() - initial
+
+    if(diference ===0) {
+      return `< 1 ${singular}`
+    }
+
+    if(diference === 1) {
+      return `1 ${singular}`
+    }
+
+    return `${diference} ${plural}`
+  }
+
+
   const stack = {
     frontend: {
       title: 'Frontend',
       icon: <MonitorSmartphone />,
       items: [
-        { name: 'Next.js', experience: 4 },
-        { name: 'React', experience: 8 },
-        { name: 'TypeScript', experience: 5 },
-        { name: 'Tailwind CSS', experience: 3 },
-        { name: 'Zustand', experience: 3 },
-        { name: 'ChakraUI', experience: 3 },
+        { name: 'Next.js', experience: getExperience(2021) },
+        { name: 'React', experience: getExperience(2020) },
+        { name: 'TypeScript', experience: getExperience(2022) },
+        { name: 'Tailwind CSS', experience: getExperience(2024) },
+        { name: 'Zustand', experience: getExperience(2024) },
+        { name: 'ChakraUI', experience: getExperience(2020) },
       ],
     },
     backend: {
       title: 'Backend',
       icon: <Server className="w-6 h-6" />,
       items: [
-        { name: 'PHP', experience: 6 },
-        { name: 'Laravel', experience: 2 },
-        { name: 'Rest API', experience: 2 },
-        { name: 'Node.js', experience: 9 },
+        { name: 'PHP', experience: getExperience(2014) },
+        { name: 'Laravel', experience: getExperience(2020) },
+        { name: 'Rest API', experience: getExperience(2016) },
+        { name: 'Node.js', experience: getExperience(2024) },
       ],
     },
     database: {
       title: 'Banco de Dados',
       icon: <Database className="w-6 h-6" />,
       items: [
-        { name: 'MySQL', experience: 5 },
-        { name: 'Prisma ORM', experience: 5 },
-        { name: 'PostgreSQL', experience: 10 },
-        { name: 'Drizzle ORM', experience: 5 },
+        { name: 'MySQL', experience: getExperience(2014) },
+        { name: 'Prisma ORM', experience: getExperience(2023) },
+        { name: 'PostgreSQL', experience: getExperience(2024) },
+        { name: 'Drizzle ORM', experience: getExperience(2024) },
       ],
     },
     devops: {
       title: 'DevOps',
       icon: <Cloud className="w-6 h-6" />,
       items: [
-        { name: 'Docker', experience: 6 },
-        { name: 'Vercel', experience: 4 },
-        { name: 'Linux', experience: 4 },
-        { name: 'CI/CD', experience: 8 },
-        { name: 'VPS', experience: 4 },
+        { name: 'Docker', experience: getExperience(2020) },
+        { name: 'Vercel', experience: getExperience(2020) },
+        { name: 'Linux', experience: getExperience(2010) },
+        { name: 'VPS', experience: getExperience(2016) },
       ],
     },
     tools: {
       title: t("aboutPage_stackSection_tools"),
       icon: <Code2 className="w-6 h-6" />,
       items: [
-        { name: 'Git', experience: 10 },
-        { name: 'WebStorm', experience: 6 },
-        { name: 'Postman', experience: 8 },
-        { name: 'Figma', experience: 8 },
+        { name: 'Git', experience: getExperience(2018) },
+        { name: 'WebStorm', experience: getExperience(2020) },
+        { name: 'Postman', experience: getExperience(2020) },
+        { name: 'Figma', experience: getExperience(2020) },
       ],
     },
     ia: {
       title: t("aboutPage_stackSection_ia"),
       icon: <BrainCircuit className="w-6 h-6" />,
       items: [
-        { name: 'n8n', experience: 2 },
-        { name: 'Context/Prompt Engineering', experience: 1 },
-        { name: 'Gemini CLI', experience: 3 },
-        { name: 'RAG', experience: 3 },
-        { name: 'MCP', experience: 3 },
+        { name: 'n8n', experience: getExperience(2025) },
+        { name: 'Context/Prompt Engineering', experience: getExperience(2025) },
+        { name: 'Gemini CLI', experience: getExperience(2025) },
+        { name: 'RAG', experience: getExperience(2025) },
+        { name: 'MCP', experience: getExperience(2025) },
       ],
     },
   };
@@ -121,7 +137,7 @@ export const DetailedStack = () => {
                             {item?.name}
                           </span>
                           <span className="text-sm text-gray-500 dark:text-gray-400">
-                            {item?.experience} {t("aboutPage_stackSection_years")}
+                            {item?.experience}
                           </span>
                         </li>
                     ))}
