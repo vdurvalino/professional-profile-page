@@ -2,20 +2,26 @@
 
 import React, {useMemo, useState} from 'react';
 import {ArrowRight, Code2, Filter, Search, X} from 'lucide-react';
-import {projects} from '@/data/projects';
 import Link from "next/link";
 import {Button} from "@/components/ui/Button";
 import {ProjectsCard} from "@/components/ProjectsCard";
+import {EntryCollection} from "contentful";
+import {TypeProjectSkeleton} from "@/types/contentful";
+import {useTranslations} from "next-intl";
 
-const ProjectsPage = () => {
+type TechType = {"name": string; "slug": string;}
+
+export const PageContent = ( {items: projects}: EntryCollection<TypeProjectSkeleton> ) => {
+    const t = useTranslations()
+
     const [selectedTech, setSelectedTech] = useState<string[]>([]);
     const [showFilters, setShowFilters] = useState(false);
 
     // Extract all unique technologies
     const allTechnologies = useMemo(() => {
-        const techSet = new Set<string>();
+        const techSet = new Set<TechType>();
         projects.forEach(project => {
-            project.tech.forEach(tech => techSet.add(tech));
+            project?.fields?.tech?.forEach(tech => techSet.add({...tech.fields}));
         });
         return Array.from(techSet).sort();
     }, []);
@@ -24,7 +30,7 @@ const ProjectsPage = () => {
     const filteredProjects = useMemo(() => {
         return projects.filter(project => {
             return selectedTech.length === 0 ||
-                selectedTech.some(tech => project.tech.includes(tech));
+                selectedTech.some(tech => project?.fields?.tech.includes(tech));
         });
     }, [selectedTech]);
 
@@ -41,26 +47,26 @@ const ProjectsPage = () => {
     };
 
     return (
-        <div className="min-h-screen pb-40">
+        <>
             {/* Hero Section */}
             <section className="page mb-0 border-b border-gray-200 dark:border-gray-800">
                 <div className="container mx-auto px-6 py-24 text-center">
                     <h1 className="section mb-3">
-                        Projetos & Cases
+                        {t("projectsPage_headline")}
                     </h1>
                     <p className="section-description mx-auto mb-10">
-                        Soluções digitais que entregam valor real e resultados medidos.
+                        {t("projectsPage_subHeadline")}
                     </p>
 
 
                     {/* Filter Button */}
                     <Button
-                        onClick={() => setShowFilters(!showFilters)}
+                        // onClick={() => setShowFilters(!showFilters)}
                         size={"lg"}
                         className="mt-6 relative"
                     >
                         <Filter className="w-4 h-4"/>
-                        Filtrar por tecnologia
+                        {t("projectsPage_button_filter")}
                         {selectedTech.length > 0 && (
                             <span
                                 className="absolute -top-2 -right-2 px-2 py-0.5 bg-gray-100 dark:bg-gray-800 text-primary border border-primary rounded-full text-xs">
@@ -79,9 +85,9 @@ const ProjectsPage = () => {
                             {allTechnologies.map(tech => (
                                 <Button
                                     size={"sm"}
-                                    variant={selectedTech.includes(tech) ? "solid" : "outline"}
-                                    key={tech}
-                                    onClick={() => toggleTech(tech)}
+                                    // variant={selectedTech.includes(tech) ? "solid" : "outline"}
+                                    key={`button_${tech.slug}`}
+                                    // onClick={() => toggleTech(tech)}
                                     className={`rounded-full text-sm`}
                                 >
                                     {tech}
@@ -98,11 +104,11 @@ const ProjectsPage = () => {
                     <div className="flex items-center justify-between mb-8">
                         <p className="text-secondary dark:text-secondary-dark">
                             {filteredProjects.length}{' '}
-                            {filteredProjects.length === 1 ? 'projeto encontrado' : 'projetos encontrados'}
+                            {filteredProjects.length === 1 ? t("projectsPage_oneProjectsFound") : t("projectsPage_manyProjectsFound")}
                         </p>
                         <div className="flex items-center gap-2 text-sm text-secondary dark:text-secondary-dark">
                             <Code2 className="w-4 h-4"/>
-                            <span>Ordenado por relevância</span>
+                            <span>{t("projectsPage_relevanceOrdered")}</span>
                         </div>
                     </div>
                 </div>
@@ -111,7 +117,7 @@ const ProjectsPage = () => {
                 <div className="container mx-auto px-6 pb-16">
                     <div className="space-y-32">
                         {filteredProjects.map(( project, index ) => (
-                            <ProjectsCard key={project.id} index={index} project={{...project}}/>
+                            <ProjectsCard key={project.sys.id} index={index} project={{...project}}/>
                         ))}
                     </div>
 
@@ -123,13 +129,13 @@ const ProjectsPage = () => {
                                 <Search className="w-10 h-10 text-gray-400"/>
                             </div>
                             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                                Nenhum projeto encontrado
+                                {t("projectsPage_empty_headline")}
                             </h3>
                             <p className="text-gray-600 dark:text-gray-400 mb-8 max-w-md mx-auto">
-                                Tente ajustar seus filtros ou termos de busca para encontrar o que procura.
+                                {t("projectsPage_empty_subHeadline")}
                             </p>
                             <Button onClick={clearFilters} size={"lg"}>
-                                Limpar filtros
+                                {t("projectsPage_empty_button")}
                                 <X className="w-4 h-4"/>
                             </Button>
                         </div>
@@ -137,26 +143,6 @@ const ProjectsPage = () => {
                 </div>
             </section>
 
-            {/* CTA Section */}
-            <div className="cta-banner">
-                <div className="container mx-auto px-6 text-center">
-                    <h2 className="cta-headline">
-                        Tem um projeto em mente?
-                    </h2>
-                    <p className="cta-sub-headline">
-                        Vamos conversar sobre como posso ajudar a transformar sua ideia em realidade.
-                    </p>
-                    <Link
-                        href="/contact"
-                        className="cta-button"
-                    >
-                        Iniciar conversa
-                        <ArrowRight className="w-5 h-5"/>
-                    </Link>
-                </div>
-            </div>
-        </div>
+        </>
     );
 };
-
-export default ProjectsPage;

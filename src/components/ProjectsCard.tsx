@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react';
 import {ArrowRight, Sparkles, Star} from 'lucide-react';
 import Link from "next/link";
@@ -6,17 +8,17 @@ import {Badge} from "@/components/ui/Badge";
 import {ChainModifiers, Entry} from "contentful";
 import {TypeProjectSkeleton} from "@/types/contentful";
 import ContentfulImage from "@/lib/contentful-image";
-import {getTranslations} from "next-intl/server";
+import {useLocale, useTranslations} from "next-intl";
 
 interface ProjectsCardProps {
     index: number
     project:  Entry<TypeProjectSkeleton, ChainModifiers, string>
 }
 
-export const ProjectsCard: React.FC<ProjectsCardProps> = async ( {project, index}: ProjectsCardProps ) => {
+export const ProjectsCard: React.FC<ProjectsCardProps> = ( {project, index}: ProjectsCardProps ) => {
     const {title, slug, excerpt, thumbnail, highlighted, tech, highlights} = project?.fields
-    const t = await getTranslations()
-    // return <pre>{JSON.stringify(project.fields, null, 2)}</pre>
+    const t = useTranslations()
+    const locale = useLocale()
 
     return (
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
@@ -72,7 +74,7 @@ export const ProjectsCard: React.FC<ProjectsCardProps> = async ( {project, index
 
                 {/* Button */}
                 <div className="mt-8">
-                    <Button size={'lg'} as={Link} href={`/projects/${slug}`}>
+                    <Button size={'lg'} as={Link} href={`/${locale}/projects/${slug}`}>
                         {t("card_projects_button")}
                         <ArrowRight className="w-4 h-4"/>
                     </Button>

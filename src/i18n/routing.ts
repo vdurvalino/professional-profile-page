@@ -11,9 +11,13 @@ export const routing = defineRouting({
             en: "/about",
             pt: "/sobre",
         },
-        "/projects": {
+        "/projects/": {
             en: "/projects",
             pt: "/projetos",
+        },
+        "/projects/[slug]": {
+            en: "/projects/[slug]",
+            pt: "/projetos/[slug]",
         },
         "/contact": {
             en: "/contact",
