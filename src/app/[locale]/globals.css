@@ -1,4 +1,4 @@
-@import "../../../node_modules/tailwindcss";
+@import "tailwindcss";
 
 @plugin 'tailwind-scrollbar';
 
@@ -106,5 +106,242 @@
         @apply inline-flex items-center gap-2 px-18 py-4 rounded-lg font-medium text-lg bg-white dark:bg-white text-gray-900 dark:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-100 focus:outline-white dark:focus:outline-white focus:outline focus:outline-2 focus:outline-offset-2 hover:cursor-pointer disabled:cursor-not-allowed transition-all
     }
 
-}
+    /* ========================================
+       CONTENT STYLES - Markdown Rendering
+       ======================================== */
 
+    .content {
+        @apply max-w-none;
+    }
+
+    /* Headers */
+    .content h1 {
+        @apply text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mt-8 mb-6 pb-3 first:mt-0 scroll-mt-20;
+    }
+
+    .content h2 {
+        @apply text-2xl md:text-4xl font-semibold text-gray-900 dark:text-gray-100 mt-8 mb-5 pb-2 scroll-mt-20;
+    }
+
+    .content h3 {
+        @apply text-xl md:text-3xl font-semibold text-gray-900 dark:text-gray-100 mt-6 mb-4 scroll-mt-20;
+    }
+
+    .content h4 {
+        @apply text-lg md:text-2xl font-semibold text-gray-900 dark:text-gray-100 mt-5 mb-3 scroll-mt-20;
+    }
+
+    .content h5 {
+        @apply text-base md:text-xl font-semibold text-gray-900 dark:text-gray-100 mt-4 mb-3;
+    }
+
+    .content h6 {
+        @apply text-sm md:text-base font-semibold text-gray-900 dark:text-gray-100 mt-4 mb-2 uppercase tracking-wide;
+    }
+
+    /* Paragraphs */
+    .content p {
+        @apply text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-5;
+    }
+
+    /* Emphasis and Strong */
+    .content em {
+        @apply italic text-gray-800 dark:text-gray-200;
+    }
+
+    .content strong {
+        @apply font-semibold text-gray-900 dark:text-gray-100;
+    }
+
+    .content strong em,
+    .content em strong {
+        @apply font-semibold italic text-gray-900 dark:text-gray-100;
+    }
+
+    /* Links */
+    .content a {
+        @apply text-primary dark:text-primary-dark hover:text-primary-hover dark:hover:text-primary-hover-dark underline underline-offset-3 decoration-2 hover:decoration-3 transition-all duration-200;
+    }
+
+    .content a:focus-visible {
+        @apply outline outline-2 outline-offset-2 outline-primary dark:outline-primary-dark rounded;
+    }
+
+    /* Lists */
+    .content ul {
+        @apply mb-5 space-y-2 ml-6 list-disc marker:text-primary dark:marker:text-primary-dark;
+    }
+
+    .content ol {
+        @apply mb-5 space-y-2 ml-6 list-decimal;
+    }
+
+    .content li {
+        @apply text-base md:text-lg text-gray-700 dark:text-gray-300 leading-relaxed pl-2;
+    }
+
+    .content li p {@apply mb-0}
+
+    /* Nested lists */
+    .content ul ul,
+    .content ol ol,
+    .content ul ol,
+    .content ol ul {
+        @apply mt-2 mb-0;
+    }
+
+    /* Code blocks - Styling será aplicado pelo syntax highlighter */
+    .content pre {
+        @apply mb-6 rounded-lg overflow-x-auto;
+    }
+
+    /* Quebra de linha automática para code blocks */
+    .content pre code {
+        @apply block text-sm leading-relaxed;
+
+    }
+
+    /* Inline code */
+    .content :not(pre) > code {
+        @apply px-1 py-0.5 rounded-md font-mono text-sm text-primary bg-gray-200;
+    }
+
+    /* Blockquotes */
+    .content blockquote {
+        @apply relative pl-6 py-3 pr-4 my-6 italic border-l-4 border-primary dark:border-blue-400 bg-blue-50 dark:bg-blue-900/20;
+    }
+
+    .content blockquote p {
+        @apply mb-0;
+    }
+
+    /* Tables */
+    .content table {
+        @apply w-full border-collapse mb-6 text-sm md:text-base overflow-x-auto block;
+    }
+
+    .content thead {
+        @apply bg-gray-50 dark:bg-gray-800;
+    }
+
+    .content th {
+        @apply bg-gray-100 dark:bg-gray-800 font-semibold text-gray-900 dark:text-gray-100 border-b-2 border-gray-300 dark:border-gray-600 px-4 py-3 text-left;
+    }
+
+    .content td {
+        @apply border-b border-gray-200 dark:border-gray-700 px-4 py-3 text-gray-700 dark:text-gray-300;
+    }
+
+    .content tr:hover {
+        @apply bg-gray-50 dark:bg-gray-900/50 transition-colors duration-150;
+    }
+
+    .content tbody tr:last-child td {
+        @apply border-b-0;
+    }
+
+    /* Horizontal rules */
+    .content hr {
+        @apply border-0 my-8;
+        height: 1px;
+        background: linear-gradient(to right, transparent, #d1d5db 20%, #d1d5db 80%, transparent);
+    }
+
+    .dark .content hr {
+        background: linear-gradient(to right, transparent, #4b5563 20%, #4b5563 80%, transparent);
+    }
+
+    /* Images */
+    .content img {
+        @apply max-w-full h-auto rounded-lg shadow-md my-6 ring-1 ring-gray-200 dark:ring-gray-700;
+    }
+
+    /* Figure and figcaption */
+    .content figure {
+        @apply my-8 text-center;
+    }
+
+    .content figure img {
+        @apply mx-auto mb-3;
+    }
+
+    .content figcaption {
+        @apply text-sm text-gray-600 dark:text-gray-400 italic;
+    }
+
+    /* Special callout blocks */
+    .content .note {
+        @apply bg-blue-50 dark:bg-blue-900/20 border-l-4 border-primary pl-4 pr-4 py-3 mb-5 rounded-r;
+    }
+
+    .content .warning {
+        @apply bg-amber-50 dark:bg-amber-900/20 border-l-4 border-amber-500 pl-4 pr-4 py-3 mb-5 rounded-r;
+    }
+
+    .content .error {
+        @apply bg-red-50 dark:bg-red-900/20 border-l-4 border-red-500 pl-4 pr-4 py-3 mb-5 rounded-r;
+    }
+
+    .content .success {
+        @apply bg-green-50 dark:bg-green-900/20 border-l-4 border-green-500 pl-4 pr-4 py-3 mb-5 rounded-r;
+    }
+
+    /* Keyboard shortcuts */
+    .content kbd {
+        @apply inline-block px-2 py-1 text-sm font-mono font-semibold bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600 rounded shadow-sm;
+    }
+
+    /* Mark/highlight */
+    .content mark {
+        @apply bg-yellow-200 dark:bg-yellow-900/50 text-gray-900 dark:text-gray-100 px-1 rounded;
+    }
+
+    /* Details/Summary */
+    .content details {
+        @apply my-4 p-4 bg-gray-50 dark:bg-gray-900/50 rounded-lg border border-gray-200 dark:border-gray-700;
+    }
+
+    .content summary {
+        @apply font-semibold cursor-pointer select-none hover:text-primary-hover dark:hover:text-primary-hover-dark transition-colors duration-200;
+    }
+
+    .content details[open] summary {
+        @apply mb-3 pb-3 border-b border-gray-200 dark:border-gray-700;
+    }
+
+    /* First and last element adjustments */
+    .content > *:first-child {
+        @apply mt-0;
+    }
+
+    .content > *:last-child {
+        @apply mb-0;
+    }
+
+
+    /* Print styles */
+    @media print {
+        .content {
+            @apply text-black bg-white;
+        }
+
+        .content * {
+            @apply text-black;
+        }
+
+        .content a {
+            @apply no-underline;
+        }
+
+        .content a[href^="http"]:after {
+            content: " (" attr(href) ")";
+            @apply text-xs;
+        }
+
+        .content pre,
+        .content blockquote {
+            @apply border border-gray-300;
+            page-break-inside: avoid;
+        }
+    }
+}
