@@ -4,6 +4,13 @@ import remarkGfm from 'remark-gfm';
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
 import {oneDark} from 'react-syntax-highlighter/dist/esm/styles/prism';
 import {ComponentPropsWithoutRef} from "react";
+import {slugify} from "@/lib/slugify"
+
+
+interface MarkdownContentProps {
+    content: string;
+    isDarkMode?: boolean;
+}
 
 interface MarkdownContentProps {
     content: string;
@@ -31,6 +38,32 @@ export const MarkdownContent = ( {content}: MarkdownContentProps ) => {
                     {children}
                 </code>
             );
+        },
+        // Because of HTML semantics, there should only be one h1 on
+        // the page and this h1 is already the title of the blog/service
+        h1( {children, ...props} ) {
+            const text = String(children);
+            return <h2 id={slugify(text)} {...props}>{children}</h2>;
+        },
+        h2( {children, ...props} ) {
+            const text = String(children);
+            return <h3 id={slugify(text)} {...props}>{children}</h3>;
+        },
+        h3( {children, ...props} ) {
+            const text = String(children);
+            return <h4 id={slugify(text)} {...props}>{children}</h4>;
+        },
+        h4( {children, ...props} ) {
+            const text = String(children);
+            return <h5 id={slugify(text)} {...props}>{children}</h5>;
+        },
+        h5( {children, ...props} ) {
+            const text = String(children);
+            return <h6 id={slugify(text)} {...props}>{children}</h6>;
+        },
+        h6( {children, ...props} ) {
+            const text = String(children);
+            return <h6 id={slugify(text)} {...props}>{children}</h6>;
         },
     };
 

@@ -63,6 +63,10 @@
         @apply text-font-primary font-sans transition-colors duration-200 ease-in-out;
     }
 
+    html {
+        scroll-behavior: smooth;
+    }
+
     h1, h2, h3 {
         @apply text-font-primary font-main;
     }
@@ -116,27 +120,27 @@
 
     /* Headers */
     .content h1 {
-        @apply text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mt-8 mb-6 pb-3 first:mt-0 scroll-mt-20;
+        @apply text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mt-8 mb-6 pb-3 first:mt-0 pt-16;
     }
 
     .content h2 {
-        @apply text-2xl md:text-4xl font-semibold text-gray-900 dark:text-gray-100 mt-8 mb-5 pb-2 scroll-mt-20;
+        @apply text-2xl md:text-4xl font-semibold text-gray-900 dark:text-gray-100 mt-8 mb-5 pb-2 pt-16;
     }
 
     .content h3 {
-        @apply text-xl md:text-3xl font-semibold text-gray-900 dark:text-gray-100 mt-6 mb-4 scroll-mt-20;
+        @apply text-xl md:text-3xl font-semibold text-gray-900 dark:text-gray-100 mt-6 mb-4 pt-16;
     }
 
     .content h4 {
-        @apply text-lg md:text-2xl font-semibold text-gray-900 dark:text-gray-100 mt-5 mb-3 scroll-mt-20;
+        @apply text-lg md:text-2xl font-semibold text-gray-900 dark:text-gray-100 mt-5 mb-3 pt-16;
     }
 
     .content h5 {
-        @apply text-base md:text-xl font-semibold text-gray-900 dark:text-gray-100 mt-4 mb-3;
+        @apply text-base md:text-xl font-semibold text-gray-900 dark:text-gray-100 mt-4 mb-3 pt-16;
     }
 
     .content h6 {
-        @apply text-sm md:text-base font-semibold text-gray-900 dark:text-gray-100 mt-4 mb-2 uppercase tracking-wide;
+        @apply text-sm md:text-base font-semibold text-gray-900 dark:text-gray-100 mt-4 mb-2 uppercase tracking-wide  pt-16;
     }
 
     /* Paragraphs */
