@@ -1,5 +1,6 @@
 import React from "react";
 import {tv, VariantProps} from "tailwind-variants";
+import { twMerge } from "tailwind-merge";
 
 const buttonVariants = tv({
     base: "relative inline-flex gap-2 items-center justify-center rounded-md font-medium focus:outline focus:outline-2 focus:outline-primary dark:focus:outline-primary-dark focus:outline-offset-2 hover:cursor-pointer disabled:cursor-not-allowed transition-all",
@@ -39,11 +40,17 @@ export const Button = React.forwardRef(
     ) => {
         const Component = as || "button";
 
+        // To fix server side rendering
+        const finalClassName = twMerge(
+            buttonVariants({size, variant}),
+            className
+        );
+
         return (
             // @ts-expect-error Erro esperado
             <Component
                 ref={ref}
-                className={buttonVariants({size, variant, className})}
+                className={finalClassName}
                 {...props}
             />
         );
