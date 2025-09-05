@@ -1,76 +1,98 @@
 "use client"
 
 import React, {useMemo, useState} from 'react';
-import {ArrowRight, Code2, Filter, Search, X} from 'lucide-react';
-import Link from "next/link";
+import {Code2, Filter, Search, X} from 'lucide-react';
 import {Button} from "@/components/ui/Button";
 import {ProjectsCard} from "@/components/ProjectsCard";
 import {EntryCollection} from "contentful";
 import {TypeProjectSkeleton} from "@/types/contentful";
 import {useTranslations} from "next-intl";
+import {useQueryState} from "nuqs";
 
-type TechType = {"name": string; "slug": string;}
+type TechType = { "name": string; "slug": string; }
 
 export const PageContent = ( {items: projects}: EntryCollection<TypeProjectSkeleton> ) => {
     const t = useTranslations()
 
-    const [selectedTech, setSelectedTech] = useState<string[]>([]);
     const [showFilters, setShowFilters] = useState(false);
+    const [selectedTech, setSelectedTech] = useQueryState("tech")
+    const selectedTechArray = selectedTech === "" ? [] : selectedTech?.split(",") || []
 
     // Extract all unique technologies
     const allTechnologies = useMemo(() => {
-        const techSet = new Set<TechType>();
+        const techMap = new Map<string, TechType>();
         projects.forEach(project => {
-            project?.fields?.tech?.forEach(tech => techSet.add({...tech.fields}));
+            project?.fields?.tech?.forEach(tech => {
+                const {name, slug} = tech.fields;
+                return techMap.set(slug, {name, slug})
+            });
         });
-        return Array.from(techSet).sort();
-    }, []);
+
+        return Array.from(techMap.values()).sort(( a, b ) =>
+            a.name.localeCompare(b.name)
+        );
+    }, [projects]);
 
     // Filter projects based on search and selected technologies
     const filteredProjects = useMemo(() => {
-        return projects.filter(project => {
-            return selectedTech.length === 0 ||
-                selectedTech.some(tech => project?.fields?.tech.includes(tech));
+        if (selectedTech === "") {
+            return projects
+        }
+
+        const filtered = projects.filter(project => {
+            const techs = project?.fields?.tech ?? [];
+            return (
+                selectedTechArray.length === 0 ||
+                techs.some(t => selectedTechArray.includes(t.fields.slug))
+            );
         });
-    }, [selectedTech]);
+
+        return filtered.sort(( a, b ) => {
+            const aTechs = (a?.fields?.tech ?? []).map(t => t.fields.slug);
+            const bTechs = (b?.fields?.tech ?? []).map(t => t.fields.slug);
+
+            const aMatches = aTechs.filter(slug => selectedTechArray.includes(slug)).length;
+            const bMatches = bTechs.filter(slug => selectedTechArray.includes(slug)).length;
+
+            return bMatches - aMatches; // mais relevantes primeiro
+        });
+    }, [projects, selectedTechArray]);
 
     const toggleTech = ( tech: string ) => {
-        setSelectedTech(prev =>
-            prev.includes(tech)
-                ? prev.filter(t => t !== tech)
-                : [...prev, tech]
-        );
+        const updated = selectedTechArray.includes(tech)
+            ? selectedTechArray.filter(t => t !== tech)
+            : [...selectedTechArray, tech];
+        setSelectedTech(updated.join(','));
     };
 
+
     const clearFilters = () => {
-        setSelectedTech([]);
+        setSelectedTech('');
     };
 
     return (
         <>
             {/* Hero Section */}
             <section className="page mb-0 border-b border-gray-200 dark:border-gray-800">
-                <div className="container mx-auto px-6 py-24 text-center">
+                <div className="container mx-auto px-6 pt-24 pb-8 text-center">
                     <h1 className="section mb-3">
                         {t("projectsPage_headline")}
                     </h1>
                     <p className="section-description mx-auto mb-10">
                         {t("projectsPage_subHeadline")}
                     </p>
-
-
                     {/* Filter Button */}
                     <Button
-                        // onClick={() => setShowFilters(!showFilters)}
+                        onClick={() => setShowFilters(!showFilters)}
                         size={"lg"}
                         className="mt-6 relative"
                     >
                         <Filter className="w-4 h-4"/>
                         {t("projectsPage_button_filter")}
-                        {selectedTech.length > 0 && (
+                        {selectedTechArray.length > 0 && (
                             <span
                                 className="absolute -top-2 -right-2 px-2 py-0.5 bg-gray-100 dark:bg-gray-800 text-primary border border-primary rounded-full text-xs">
-                              {selectedTech.length}
+                              {selectedTechArray.length}
                             </span>
                         )}
                     </Button>
@@ -79,18 +101,18 @@ export const PageContent = ( {items: projects}: EntryCollection<TypeProjectSkele
 
             {/* Filters Section */}
             {showFilters && (
-                <div className="bg-white dark:bg-slate-800 border-b border-gray-200 dark:border-gray-700 py-6">
+                <div className="bg-white dark:bg-slate-800 border-b border-gray-200 dark:border-gray-700 py-6 mb-12">
                     <div className="container mx-auto px-6">
                         <div className="flex flex-wrap gap-2 justify-center">
-                            {allTechnologies.map(tech => (
+                            {allTechnologies.map(( {slug, name} ) => (
                                 <Button
                                     size={"sm"}
-                                    // variant={selectedTech.includes(tech) ? "solid" : "outline"}
-                                    key={`button_${tech.slug}`}
-                                    // onClick={() => toggleTech(tech)}
+                                    variant={selectedTechArray.includes(slug) ? "solid" : "outline"}
+                                    key={slug}
+                                    onClick={() => toggleTech(slug)}
                                     className={`rounded-full text-sm`}
                                 >
-                                    {tech}
+                                    {name}
                                 </Button>
                             ))}
                         </div>

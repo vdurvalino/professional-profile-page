@@ -3,6 +3,7 @@ import Link from "next/link";
 import {getProjects} from "@/data/projects";
 import {PageContent} from "@/app/[locale]/projects/PageContent";
 import {getTranslations} from "next-intl/server";
+import {NuqsAdapter} from "nuqs/adapters/next/app";
 
 const ProjectsPage = async () => {
     const [projects, t] = await Promise.all([
@@ -12,7 +13,9 @@ const ProjectsPage = async () => {
 
     return (
         <div className="min-h-screen pb-40">
-            <PageContent {...projects} />
+            <NuqsAdapter>
+                <PageContent {...projects} />
+            </NuqsAdapter>
 
             {/* CTA Section */}
             <div className="cta-banner">
